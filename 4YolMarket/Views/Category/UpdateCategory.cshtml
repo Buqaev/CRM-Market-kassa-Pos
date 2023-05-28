@@ -1,0 +1,37 @@
+﻿@model _4YolMarket.Models.Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h2>Kateqoriya Yenile</h2>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" action="@Url.Action("Update","Category", new {Id = Model.Id })" enctype="multipart/form-data" role="form">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Ad</label>
+                    <input type="text" value="@Model.Ad" name="Ad" class="form-control" id="exampleInputEmail1">
+                </div>
+             
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Yenile</button>
+            </div>
+        </form>
+    </div>
+    <!-- /.card -->
+    <!-- Form Element sizes -->
+
+
+
+</div>

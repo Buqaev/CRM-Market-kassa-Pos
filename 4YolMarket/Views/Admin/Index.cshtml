@@ -1,0 +1,37 @@
+﻿@model List<_4YolMarket.Models.Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <table id="admin" class="table table-hover" >
+        
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+                <th>Sifre</th>
+                <th>Melumat Yenile</th>
+            </tr>
+        </thead>
+        <tbody style="font-size:20px;">
+            @foreach (var x in Model)
+            {
+                <tr>
+
+                    <td>@x.Ad</td>
+                    <td>@x.Soyad</td>
+                    <td>@x.Email</td>
+                    <td>@x.Sifre</td>
+                    <td>
+                        <a href="@Url.Action("MelumatGetir","Admin",new { Id=x.Id})" class="btn btn-primary" style="border-radius:20px;">Yenile</a>
+                    </td>
+                    
+                </tr>
+            }
+            </tbody>
+    </table>
+</div>
+

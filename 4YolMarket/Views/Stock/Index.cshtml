@@ -1,0 +1,364 @@
+﻿@model _4YolMarket.Models.StoDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int a = 1;
+}
+
+@*<script src="~/Scripts/bootstrap.min.js"></script>*@
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+
+
+<div class="container">
+    <h2>Anbar Siyahsı</h2>
+    <table class="table " @*id="stokc1"*@>
+        <thead style="background-color:whitesmoke;font-size:19px;">
+            <tr>
+                <th>Sıra No</th>
+                <th>Məhsul Adı</th>
+                <th>Məhsul Sayı(Çəkisi)</th>
+                <th>Alış Qiyməti</th>
+                <th>Satış Qiyməti</th>
+                <th>Məhsul Şəkli</th>
+                <th>Tənzimlə</th>
+
+
+            </tr>
+        </thead>
+        <tbody id="SetUserList" style="font-size: 17px;">
+            @foreach (var x in Model.Stocks)
+            {
+
+
+            <tr>
+                <td>@a @{a++;}</td>
+                <td>@x.Product.Ad</td>
+                <td>@x.Say_ceki_</td>
+                <td>@x.AlisMebleg</td>
+
+                <td>@x.SalePrice</td>
+                <td>
+                    <img src="~/Images/@x.Product.Sekil" width="70px;" height="60px;" />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#iboform-@x.Id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                        Yenilə
+                    </button>
+
+
+                    @*//Update Modal*@
+                    <form method="post" role="form" action="@Url.Action("Update","Stock",new {Id=x.Product.Id })" enctype="multipart/form-data">
+
+                        <div class="modal fade" id="iboform-@x.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Məhsulun qiymətini dəyiş</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex row">
+                                            <div class="form-group col-md-12">
+                                                <label for="exampleInputEmail1">Məhsul Adı</label>
+                                                <input type="text" id="Ad" name="Ad" class="form-control" value="@x.Product.Ad" required="">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="d-flex row">
+                                            <div class="form-group col-md-12">
+                                                <label for="exampleInputEmail1">Satış Qiyməti</label>
+                                                <input type="text" id="SalePrice" name="SalePrice" class="form-control" value="@x.SalePrice" required="">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="d-flex row">
+                                            <div class="form-group col-md-6">
+
+
+                                                <label for="exampleInputEmail1">Katiqorya</label>
+                                                <input type="text" id="SalePrice" name="SalePrice" class="form-control" value="@x.Product.Category.Ad" required="">
+
+
+                                            </div>
+
+                                            <div class="form-group  col-md-6 " style="height:40px !important;">
+                                                <label for="exampleInputEmail1">Brend</label>
+                                                <input type="text" id="SalePrice" name="SalePrice" class="form-control" value="@x.Product.Brand.Ad" required="">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Barkod</label>
+                                                <input required="" type="text" name="Barcode" value="@x.Product.Barcode" class="form-control" placeholder="Ad Daxil Edin">
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                        <button type="submit" class="btn btn-primary">Yadda Saxla</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    @*//Update Modal*@
+
+
+                </td>
+
+            </tr>
+            }
+
+        </tbody>
+        <tbody id="SetUserList">
+            <tr id="LoadingStatus" style="color:red;"></tr>
+        </tbody>
+    </table>
+    <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+        <nav class="mt-3">
+            <ul class="pagination pagination-sm" style=" height:40px;">
+                @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                    @if (ViewBag.Page - 1 != 0)
+                    {
+                        <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                    }
+                </li>*@
+                @if (ViewBag.currentPage > 1)
+                {
+                    <li>
+                        <a style="height: 40px; width: 30px; font-size: 17px;" class="page-link" href="~/Stock/Index">1</a>
+                    </li>
+                    <li>
+                        @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                        <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("Index","Stock",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+
+                    </li>
+                }
+
+
+                @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+                {
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+                }*@
+                @for (var i = ViewBag.startPage; i <= ViewBag.endPage; i++)
+                {
+
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Stock",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+
+                    @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                        <a href="~/Logs/Index?page=@page">@page</a>
+                    </li>*@
+
+                }
+
+
+                <li class="page-item">
+                    @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                    {
+                        <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("Index","Stock",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris , CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Sonrakı</a>
+                    }
+                </li>
+            </ul>
+        </nav>
+
+        <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+    </div>
+</div>
+
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">Anbara Məhsul Əlavə Edin</div>
+            </div>
+            <form method="post" action="@Url.Action("AddStock", "Stock")" enctype="multipart/form-data" role="form">
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+
+                    <div class="d-flex row">
+
+
+                        <div class="form-group  col-md-6 " style="height:40px !important;">
+                            <label for="exampleInputEmail1">Məhsul</label>
+                            <select name="ProductId" class="form-control">
+                                <option>--Secin</option>
+                                @foreach (var x in ViewBag.product)
+
+                                {
+                                    <option value="@x.Id">@x.Ad</option>
+                                }
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Məhsulun (Çəkisini/Saynı) Daxil Et</label>
+                            <input type="text" name="Say_ceki_" class="form-control" @*id="exampleInputEmail1"*@ placeholder="Qəbul edilən (say/çəki)">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Satış Qiyməti</label><br />
+                            <input type="text" name="SalePrice" class="form-control" @*id="exampleInputEmail1"*@ placeholder="Satış Qiyməti">
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Yarat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="kt_notes_panel2" class="editpopup offcanvas offcanvas-right kt-color-panel p-5">
+    <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+        <h4 class="font-size-h4 font-weight-bold m-0">
+            Edit Account
+        </h4>
+        <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" id="kt_notes_panel_close2">
+            <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+            </svg>
+        </a>
+    </div>
+    <form id="myform2" method="get" enctype="multipart/form-data" role="form">
+
+
+        <div class="row" id="MyModel">
+
+            <div class="col-12">
+
+            <div class="form-group">
+
+                <label class="text-dark">Account No</label>
+                <input type="text" value="" name="Ad" class="form-control">
+
+            </div>
+            <div class="form-group">
+                <label class="text-dark"> Name</label>
+                <input type="text" name="" class="form-control" value="Advid">
+            </div>
+            <div class="form-group">
+                <label class="text-dark">Initial Balance</label>
+                <input type="text" name="text" class="form-control" value="12">
+            </div>
+            <div>
+                <div class="form-group">
+                    <label for="label-textarea2">Note</label>
+                    <fieldset class="form-label-group">
+                        <textarea class="form-control" id="label-textarea2" rows="3" placeholder="Note">this is first Account</textarea>
+
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+            
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit Account</button>
+    </form>
+</div>
+@*<script>
+    function updateCart(items) {
+        items.forEach(function (item) {
+            updateToCart(item.id, item.quantity); // update database
+        });
+        // calculate the new totals
+        // refresh page
+    }
+    $("#LoadingStatus").html("Loading....");
+    $.get("/Stock/GetUserList", null, DataBind);
+    function DataBind(UserList) {
+        var SetData = $("#SetUserList");
+        for (var i = 0; i < UserList.length; i++) {
+
+            var Data = "<tr class='row_" + UserList[i].Id + "'>" +
+                "<td>" + @a @{a++;}+ "</td>" +
+                "<td>" + UserList[i].ProductId + "</td>" +
+                "<td>" + UserList[i].Say_ceki_ + "</td>" +
+                "<td>" + UserList[i].SalePrice+ "</td>" +
+                "<td>" + ' <img src=' + '/Images/' + UserList[i].Sekil+ ' width="70px;" height="60px;" />'+"</td>" +
+
+
+                "<td>" + "<button onclick='updateToCart()'  style='border-radius:15px; width:70px; background-color:orange;' class='btn btn-warning!important  dropdown-item click-edit ' id='click-edit11' data-toggle='tooltip' title='' data-placement='right'data-original-title='Check out more demos' >Yenile</button>" + "</td>" +
+                    
+                "<td>" + "<a href='#' class='btn btn-danger' onclick='DeleteUserRecoverd(" + UserList[i].Id + ")'><span class='glyphicon glyphicon-trash'></span></a>" + "</td>" +
+                "</tr>";
+            SetData.append(Data);
+            $("#LoadingStatus").html(" ");
+        }
+    }
+    function EditUserRecoverd(UserId) {
+
+        var url = "/Stock/GetUserById?UserId=" + UserId;
+        $("#ModelTitle").html("Update User");
+        $("#MyModel").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#Id").val(obj.Id);
+                $("#Say_ceki_").val(obj.Say_ceki_);
+                $("#UseName").val(obj.SalePrice);
+                
+                //$("#DropDown option:selected").text(obj.tblDepartmen.DepatmenAd);
+                //$("#DropDown option:selected").val(obj.DepartmenId.DepatmenAd);
+
+            }
+        })
+    }
+
+    $("#SaveUserRecort").click(function () {
+
+        var data = $("#SubmitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Groud/SaveDateInDateBase",
+            data: data,
+            success: function (result) {
+                alert("Succes!...");
+                window.location.href = "/Groud/Index";
+                $("#MyModel").modal("hide");
+            }
+        })
+    })
+
+
+
+
+    //function updateToCart(id, quantity) {
+    //    $.ajax({
+    //        url: "Update/Stock",
+    //        type: "GET",
+    //        data: JSON.stringify({ "id": id, "quantity": quantity }),
+    //        success: function (data, textStatus, jqXHR) {
+    //            console.log('Item updated: ' + id + ', ' + textStatus);
+    //        },
+    //        error: function (jqXHR, textStatus, errorThrown) {
+    //            console.error('Could not update item: ' + id + ', due to: ' + textStatus + ' | ' + errorThrown);
+    //        }
+    //"<a href='#' class='btn btn-warning' id='myform2' onclick='EditUserRecoverd(" + UserList[i].Id + ")'><span class='glyphicon glyphicon-edit'></span></a>"
+    //    });
+    //}
+</script>*@

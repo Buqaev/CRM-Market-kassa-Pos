@@ -1,0 +1,468 @@
+﻿
+
+
+@model _4YolMarket.Models.ProductDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int a = 1;
+}
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/
+    4.0.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/
+    jquery/3.3.1/jquery.min.js">
+    </script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/
+    popper.js/1.12.9/umd/popper.min.js">
+    </script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/
+    4.0.0/js/bootstrap.min.js">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+
+
+</head>
+
+<style>
+    .select2-results__option {
+        font-size: 15px !important;
+    }
+
+    .select2-search__field {
+        font-size: 15px !important;
+    }
+</style>
+
+<h2 class="container">Məhsul Siyahısı</h2>
+<div class="container">
+    <form typeof="Post" action="@Url.Action("Index","Product")">
+        <select class="js-example-basic-single" name="SelsctId" style="font-size:18px;">
+            @foreach (var item in Model.products2)
+            {
+                <option style="" value="@item.Id">@item.Ad</option>
+            }
+
+
+        </select>
+        <button type="submit" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+        </button>
+    </form>
+    <div class="icons d-flex" style="float:right; ">
+
+        <button class="btn ml-2  p-0 btn" data-toggle="modal" data-target="#Modal1" style=" width:50px; height:50px;"
+                id="kt_notes_panel_toggle" title="Əlave Et" data-placement="right"
+                data-original-title="Check out more demos">
+            <span style="width: 45px !important; height: 45px !important;" class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm ">
+
+                <svg style="" width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+            </span>
+
+        </button>
+
+
+    </div>
+</div>
+
+<div class="container">
+    <table @*id="meh1"*@ style="font-size:15px" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sira No:</th>
+                <th>Məhsul Kodu</th>
+                <th>Ad</th>
+                <th>Kateqoriya</th>
+                <th>Brend</th>
+                <th>Kəmiyyət</th>
+                <th>Barkod</th>
+                <th>Sekil</th>
+                <th>Yeniləməy üçün</th>
+                <th>Silməy üçün</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.products)
+            {
+                <tr>
+                    <td> @a @{a++;} </td>
+                    <td>@x.ProductCode</td>
+                    <td>@x.Ad</td>
+                    <td>@x.Category.Ad</td>
+                    <td>@x.Brand.Ad</td>
+                    @if (x.IsComtable == true)
+                    {
+                        <td style="font-style:italic; color:royalblue;">ədəd</td>
+                    }
+                    @if (x.IsComtable == false)
+                    {
+                        <td style="font-style:italic; color:red;">kg</td>
+                    }
+
+                    <td>@x.Barcode</td>
+                    <td>
+                        <img width="60px" height="60px" src="~/Images/@x.Sekil" />
+                    </td>
+
+                    <td>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#iboform-@x.Id">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                            Yenilə
+                        </button>
+
+
+                        @*//Update Modal*@
+                        <form method="post" role="form" action="@Url.Action("UpdateProduct","Product",new {Id=x.Id })" enctype="multipart/form-data">
+
+                            <div class="modal fade" id="iboform-@x.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Məhsulu Yenilə</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="d-flex row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="exampleInputEmail1">Məhsul Adı</label>
+                                                    <input type="text" id="Ad" name="Ad" class="form-control" value="@x.Ad" required="">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="d-flex row">
+                                                <div class="form-group col-md-6">
+
+
+                                                    <label for="exampleInputEmail1">Katiqorya</label>
+                                                    <select name="CategoryId" class="form-control" required="">
+                                                        @foreach (var cc in ViewBag.Category)
+
+                                                        {
+                                                            <option @(cc.Id == x.CategoryId ? "selected" : "") value="@cc.Id">@cc.Ad</option>
+                                                        }
+
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="form-group  col-md-6 " style="height:40px !important;">
+                                                    <label for="exampleInputEmail1">Brend</label>
+                                                    <select name="BrandId" class="form-control" required="">
+                                                        @foreach (var cc in ViewBag.Brend)
+
+                                                        {
+                                                            <option @(cc.Id == x.BrandId ? "selected" : "") value="@cc.Id">@cc.Ad</option>
+                                                        }
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="exampleInputEmail1">Barkod</label>
+                                                    <input required="" type="text" name="Barcode" value="@x.Barcode" class="form-control" placeholder="Ad Daxil Edin">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="exampleInputEmail1">Sekil</label><br>
+                                                    <input type="file" style="display:block;" name="Sekil" for="exampleInputEmail1" class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+
+
+
+                                                <div class="form-group col-md-12">
+                                                    <label for="vehicle1" class="">Aşağdan Məhsulun Tipini Seç</label><br>
+                                                    <input style="height:15px; width:15px;" type="checkbox" id="vehicle1" name="eded" value="eded">
+                                                    <label for="vehicle1">ədəd(saylı məhsul)</label><br>
+                                                    <input style="height:15px; width:15px;" type="checkbox" id="vehicle2" name="kg" value="kg">
+                                                    <label for="vehicle2">kg(çəkili məhsul)</label><br>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                            <button type="submit" class="btn btn-primary">Yadda Saxla</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        @*//Update Modal*@
+
+
+                    </td>
+
+
+                    <td>
+                        <a id="silemelyat" onclick="return confirm('Silməyə Əminsinizmi?');" style="border-radius:15px;" href="@Url.Action("Delate","Product",new {Id=x.Id })" class="btn btn-danger">Sil</a>
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+        <nav class="mt-3">
+            <ul class="pagination pagination-sm" style=" height:40px;">
+                @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                        @if (ViewBag.Page - 1 != 0)
+                        {
+                            <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                        }
+                    </li>*@
+                @if (ViewBag.currentPage > 1)
+                {
+                    <li>
+                        <a style="height: 40px; width: 30px; font-size: 17px;" class="page-link" href="~/Product/Index">1</a>
+                    </li>
+                    <li>
+                        @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                        <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("Index","Product",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris, SelsctId = ViewBag.SelsctId})">Əvvəlki</a>
+
+                    </li>
+                }
+
+
+                @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+                    {
+                        <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+                    }*@
+                @for (var i = ViewBag.startPage; i <= ViewBag.endPage; i++)
+                {
+
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Product",new { page = i, p = ViewBag.Axtaris, SelsctId = ViewBag.SelsctId })">@i</a></li>
+
+                    @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                            <a href="~/Logs/Index?page=@page">@page</a>
+                        </li>*@
+
+                }
+
+
+                <li class="page-item">
+                    @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                    {
+                        <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("Index","Product",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris ,SelsctId = ViewBag.SelsctId})">Sonrakı</a>
+                    }
+                </li>
+            </ul>
+        </nav>
+
+        <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+    </div>
+</div>
+
+
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">Yeni Mehsul Elave Edin</div>
+            </div>
+            <form id="myform" name="registration" method="post" class="form" action="@Url.Action("CreateProduct","Product")" enctype="multipart/form-data" role="form">
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+                    <div class="d-flex row">
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Məhsul Adı</label>
+                            <input type="text" id="Ad" minlength="2" name="Ad" class="form-control Ad" placeholder="Ad Daxil Edin" title="Mütləq doldurulmalıdır!">
+
+                        </div>
+
+                    </div>
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+
+
+                            <label for="exampleInputEmail1">Katiqorya</label>
+                            <select name="CategoryId" id="CategoryId" class="form-control" title="Məhsulun Katiqoryasını Seç!">
+                                <option value="">--Secin</option>
+                                @foreach (var x in ViewBag.Category)
+
+                                {
+                                    <option value="@x.Id">@x.Ad</option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group  col-md-6 " style="height:40px !important;">
+                            <label for="exampleInputEmail1">Brend</label>
+                            <select name="BrandId" id="BrandId" class="form-control" title="Məhsulun Brendini Seç!">
+                                <option value="">--Seçin</option>
+                                @foreach (var x in ViewBag.Brend)
+
+                                {
+                                    <option value="@x.Id">@x.Ad</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Barkod</label>
+                            <input required type="text" name="Barcode" class="form-control" placeholder="Ad Daxil Edin" title="Barkod Daxilet!">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Sekil</label><br />
+                            <input type="file" style="display:block;" name="Sekil" for="exampleInputEmail1" class="form-control" id="exampleInputEmail1" title="Məhsulun Şəklini Seç!">
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+
+
+                        <div class="form-group col-md-12">
+                            <label for="vehicle1" class="">Aşağdan Məhsulun Tipini Seç</label><br />
+                            <input style="height:15px; width:15px;" type="checkbox" id="vehicle1" name="eded" value="eded">
+                            <label for="vehicle1">ədəd(saylı məhsul)</label><br>
+                            <input style="height:15px; width:15px;" type="checkbox" id="vehicle2" name="kg" value="kg">
+                            <label for="vehicle2">kg(çəkili məhsul)</label><br>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Yarat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<link href="vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+<script src="vendor/select2/dist/js/select2.min.js"></script>
+<link href="path/to/select2.min.css" rel="stylesheet" />
+<script src="path/to/select2.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform").validate({
+        rules: {
+            Ad: {
+                required: true
+            },
+            CategoryId: {
+
+                required: true
+            },
+            BrandId: {
+                required: true
+            },
+            Barcode: {
+                required: true
+            },
+            Sekil: {
+                required: true
+            },
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.js-example-basic-single').select2();
+    });
+</script>
+
+<script>
+    $("#silemelyat").click(function(e){
+       var r = confirm("Məhsulu silməy isdədiyindən əminsən?(Əgər məhsulu silməyəcəysənsə [Cancel] düyməsinə bas)");
+
+       //cancel clicked : stop button default action
+       if (r === false) {
+           return false;
+        }
+
+        //action continues, saves in database, no need for more code
+
+
+   });
+</script>
+
+
+@*<script>
+        $(document).ready(function () {
+        $('#addForm').validate(
+            {
+                rules: {
+                    Ad: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 10,
+                        messages: {
+                            required: "Mütləq doldurulmalıdır!",
+                            minlength: jQuery.validator
+                                .format("Please, at least {0} characters are necessary"),
+                            maxlength: jQuery.validator
+                                .format("Please, at least {0} characters are necessary")
+                        }
+                    },
+                    CategoryId: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 10,
+                        messages: {
+                            required: "Mütləq doldurulmalıdırss!",
+                            minlength: jQuery.validator
+                                .format("Please, at least {0} characters are necessary"),
+                            maxlength: jQuery.validator
+                                .format("Please, at least {0} characters are necessary")
+                        }
+                        , highlight: function (element) {
+                            $(element)
+                                .closest('.form-group')
+                                .removeClass('success')
+                                .addClass('error');
+                        },
+                        success: function (element) {
+                            element.text('OK!').addClass(
+                                'valid').closest(
+                                    '.form-group')
+                                .removeClass('error')
+                                .addClass('success');
+                        }
+                    },/*);*/
+        });
+    </script>*@

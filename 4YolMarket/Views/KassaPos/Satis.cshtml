@@ -1,0 +1,68 @@
+﻿
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">Yeni Mehsul Elave Edin</div>
+            </div>
+            <form method="post" action="@Url.Action("CreateProduct","Product")" enctype="multipart/form-data" role="form">
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+                    <div class="d-flex row">
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Məhsul Adı</label>
+                            <input type="text" name="Ad" class="form-control" @*id="exampleInputEmail1"*@ placeholder="Ad Daxil Edin">
+                        </div>
+
+                    </div>
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+
+
+                            <label for="exampleInputEmail1">Katiqorya</label>
+                            <select name="CategoryId" class="form-control">
+                                <option>--Secin</option>
+                                @*@foreach (var x in ViewBag.Category)
+
+                                    {
+                                        <option value="@x.Id">@x.Ad</option>
+                                    }*@
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group  col-md-6 " style="height:40px !important;">
+                            <label for="exampleInputEmail1">Brend</label>
+                            <select name="BrandId" class="form-control">
+                                <option>--Secin</option>
+                                @*@foreach (var x in ViewBag.Brend)
+
+                                    {
+                                        <option value="@x.Id">@x.Ad</option>
+                                    }*@
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Barkod</label>
+                            <input type="text" name="Barcode" class="form-control" @*id="exampleInputEmail1"*@ placeholder="Ad Daxil Edin">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Sekil</label><br />
+                            <input type="file" style="display:block;" name="Sekil" for="exampleInputEmail1" class="form-control" id="exampleInputEmail1">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Yarat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

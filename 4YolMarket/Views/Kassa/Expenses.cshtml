@@ -1,0 +1,73 @@
+﻿@model _4YolMarket.Models.KassaDto
+@{
+    ViewBag.Title = "Expenses";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h2>Ödəniş Əməliyatı</h2>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" action="@Url.Action("Complete","Kassa",new {Id=Model.Purchase.Id,FirId=Model.Purchase.FirmaId })" enctype="multipart/form-data" role="form">
+            <div class="card-body">
+                <div class="form-group" style="height:90px;">
+                    <label style="font-size: 15px;" for="exampleInputEmail1">Ad</label>
+                    <input style="height:70px;  font-size:20px;" type="text" value="@Model.Purchase.Firma.Ad" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group" style="height:90px;">
+                    <label style="font-size: 15px;" for="exampleInputEmail1">Tarix</label>
+                    <input style="height:70px;  font-size:20px;" type="text" value="@Model.Purchase.Tarix" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group" style="height:90px;">
+                    <label style="font-size: 15px;" for="exampleInputEmail1">Ümumi Məbləğ</label>
+                    <input style="height:70px;  font-size:20px;" type="text" value="@ViewBag.Borc" class="form-control" id="SumPrice">
+                </div>
+                <div class="form-group" style="height:90px;">
+                    <label>Kassa seçin:</label>
+                    <select class="form-control m-input" name="CashBoxId" required>
+                        <option value="">Seçin</option>
+
+                        @foreach (var c in ViewBag.CashBoxes)
+                        {
+                            <option value="">Nəğd Kassa</option>
+                            <option value="@c.Id">@c.Name</option>
+                        }
+
+                    </select>
+
+                </div>
+                <div class="form-group" style="height:90px;">
+                    <label style="font-size: 15px;" for="exampleInputEmail1">Ödəniləcək Məbləğ Daxilet</label>
+                    <input style="height:70px; width:150px;  font-size:20px;" required type="text" name="Mebleg" value="" class="form-control" id="Price" placeholder="Məbləği Daxil Et">
+                </div>
+
+            </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" onclick="MeblegYoxla()" class="btn btn-primary">Ödənişi Et</button>
+                </div>
+</form>
+    </div>
+    <!-- /.card -->
+    <!-- Form Element sizes -->
+
+
+
+</div>
+<script>
+    function MeblegYoxla() {
+        var Umumi = document.getElementById("SumPrice").value;
+        var Odenilen = document.getElementById("Price").value;
+        if (Umumi < Odenilen) {
+            confirm("Qeyd:Daxil etdiyiniz məbləğ ümumi ödəniləcək məbləğdən daha çoxdur davametmək üçün(OK), yenidən məbləğ daxiletməy üçün(Cancel) düyməsinə bas!")
+        }
+        
+
+
+    }
+</script>

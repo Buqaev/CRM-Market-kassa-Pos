@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Medaxil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <form method="post" action="@Url.Action("Create","Kassa")">
+        <h3>Kassa Mədaxil</h3><br />
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="form-group d-flex">
+                    <div class="col-md-5">
+                        <label>Məbləği Daxilet</label>
+                        <input name="Mebleg" style="width: 300px; height: 40px; font-size: 20px;" required type="text" placeholder="məbləğ ₼" /><br /><br />
+                    </div>
+
+
+                    <div class="col-md-5">
+                        <label>Mədaxil Qaynağı</label>
+                        <select class="js-example-basic-single" name="FirmaId" style="font-size: 40px;">
+                            <option>Seçin</option>
+                            @foreach (var item in ViewBag.Firma)
+                            {
+
+                                <option style="width: 300px; height: 50px; font-size: 40px !important;" value="@item.Id">@item.Ad</option>
+                            }
+
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group d-flex">
+                    @*<div class="col-md-12">*@
+                    <div class="col-md-6">
+                        <label>Açıxlama</label><br />
+                        <input name="Description" style="width: 300px; height: 40px; font-size: 20px;" required type="text" placeholder="Acıxlama" /><br /><br />
+                    </div>
+                    @*</div>*@
+                </div>
+            </div>
+
+            
+
+            </div>
+
+
+
+
+        <button type="submit" class="btn btn-primary" style="font-size:20px;">Təsdiqlə</button>
+    </form>
+</div>
+
+
+

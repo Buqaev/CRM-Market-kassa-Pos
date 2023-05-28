@@ -1,0 +1,106 @@
+﻿@model _4YolMarket.Models.Stock
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+
+</head>
+<div class="container">
+
+
+
+    <div class="modal-title" style="font-size:25px;">Satışa yararsız məhsulların geriqaytarılması</div>
+
+    <form method="post" id="myform" action="@Url.Action("Qaytar","Return",new {StoId=Model.Id })" enctype="multipart/form-data" role="form">
+        <div class="card-body" style="font-size:17px; font-weight:700;">
+
+            <div class="d-flex row">
+                <div class="form-group col-md-6">
+
+
+                    <label for="exampleInputEmail1">Məhsulun Adı</label>
+                    <input type="text" name="Mehsul" value="@Model.Product.Ad" style="height:40px; font-size:16px;" class="form-control">
+                    @*<select name="CategoryId" class="form-control">
+                            <option>--Secin</option>
+                            @foreach (var x in Model.Product)
+
+                            {
+                                <option value="@x.Id">@x.Ad</option>
+                            }
+
+                        </select>*@
+
+                </div>
+                <div class="form-group col-md-6">
+
+
+                    <label for="exampleInputEmail1">Mayadəyəri(Gəliş qiyməti)</label>
+                    <input type="text" value="@ViewBag.qiymet" style="height:40px; font-size:16px;" class="form-control">
+
+
+                </div>
+
+            </div>
+            <div class="d-flex row">
+                <div class="form-group col-md-6">
+                    <label for="Say">Say/Çəki</label> 
+                    <input type="text" id="Say" name="Say" style="height:40px; font-size:16px;"  title="Mütləq doldurulmalıdır!" class="form-control Say" placeholder="Say/Çəki daxilet">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Description">Geri qaytarma səbəbi</label>
+                    <input type="text" name="Description" id="Description" style="height:40px; font-size:16px;" class="form-control Description"  title="Mütləq doldurulmalıdır!" placeholder="Hansı Səbəbə Görə Geriqayratılır">
+                </div>
+            </div>
+            @*<div class="d-flex row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Hansı Firmya Qaytarlacağ</label>
+                    <select name="FirmaId" class="form-control" style="height:40px; font-size:16px;">
+                            <option>--Secin</option>
+                            @foreach (var x in ViewBag.Firma)
+
+                            {
+                                <option value="@x.Id">@x.Ad</option>
+                            }
+
+                        </select>
+                </div>
+
+            </div>*@
+
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Təsdiqlə</button>
+        </div>
+    </form>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform").validate({
+        rules: {
+            Say: {
+                required: true
+            },
+             Description: {
+                required: true
+            },
+            Customer: {
+                required: true
+            }
+        }
+    });
+</script>

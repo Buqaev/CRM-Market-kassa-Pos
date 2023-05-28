@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "MusderiGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="@Url.Action("Sil","Customer", new {Id = Model.Id})" enctype="multipart/form-data" role="form">
+
+    <div class="card-body">
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;" for="exampleInputEmail1">Ad</label>
+            <input style="height:70px;  font-size:20px;" type="text" value="@Model.Ad" class="form-control" id="exampleInputEmail1">
+        </div>
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;" for="exampleInputEmail1">Soyad</label>
+            <input style="height:70px;  font-size:20px;" type="text" value="@Model.Soyad" class="form-control" id="exampleInputEmail1">
+        </div>
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;" for="exampleInputEmail1">Açıxlama</label>
+            <input style="height:70px;  font-size:20px;" type="text" value="@Model.Description" class="form-control" id="exampleInputEmail1">
+        </div>
+
+
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;"  for="exampleInputEmail1">Borc</label>
+            <input style="height:70px;  font-size:20px;" type="text" value="@Model.Balance" class="form-control" id="Borc" placeholder="Ad Metn Edin">
+        </div>
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;" for="exampleInputEmail1">Ödəniləcək Məbləğ</label>
+            <input onkeyup="QaimeNomre()" required style="height:70px; width:150px; font-size:20px;" type="text" name="Mebleg" value="" class="form-control" id="Mebleg" placeholder="Məbləği Daxil Et">
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit"  id="odenis" class="btn btn-primary">Ödənişi Təsdiqlə</button>
+    </div>
+</form>
+
+<script>
+    $("#odenis").click(function () {
+        
+        var say1 = $("#Borc").val();
+        var say2 = $("#Mebleg").val();
+        let a = parseFloat(say1);
+        let b = parseFloat(say2);
+        if (a<b) {
+            alert("Qeyd:Səhv məbləğ daxiletmisiniz!")
+            return false;
+        }
+        
+
+
+    });
+</script>

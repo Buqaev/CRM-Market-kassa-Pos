@@ -1,0 +1,76 @@
+﻿@model _4YolMarket.Models.AlisDto
+@{
+    ViewBag.Title = "BuyList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int a = 1;
+}
+
+<!DOCTYPE html>
+<style>
+    .form-control-sm {
+        border:5px  ;
+        height: 35px;
+        
+        font-size:15px;
+    }
+
+    #example_filter {
+        
+        height: 37px;
+    }
+        #example_filter label {
+            font-size: 15px;
+           
+        }
+    .buttons-pdf {
+        background-color: #9cd3d3 !important;
+    }
+    
+</style>
+<div class="container">
+    <table  class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+        <thead>
+            <tr style="font-size:23px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                <th>Sıra NO</th>
+                <th>Məhsul</th>
+                <th>İstehasl Tarixi</th>
+                <th>Son İsdifadə Tarixi</th>
+                <th>Alış Qiymət</th>
+                <th>Say(Çəki)</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.PurchaseItems)
+            {
+
+
+                <tr style="font-size:20px;">
+                    <td>@a @{a++;} </td>
+                    <td>@x.Product.Ad</td>
+                    <td>@x.IstehsalTarixi.ToString("dd-MM-yyyy")</td>
+                    <td>@x.BitmeTarixi.ToString("dd-MM-yyyy")</td>
+                    <td>@x.AlisMebleg</td>
+                    <td>@x.Say_Ceki_</td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+    
+
+    <script>
+	$(document).ready(function() {
+	    var table = $('#example').DataTable( {
+	        lengthChange: false,
+	        buttons: [ 'pdf' ]
+	    } );
+
+	    table.buttons().container()
+	        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+	} );
+    </script>
+

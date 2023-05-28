@@ -1,0 +1,35 @@
+﻿@model List<_4YolMarket.Models.Cash>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int a = 1;
+}
+
+<div class="container">
+    <table id="kas1" style="font-size:15px" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sira No:</th>
+                <th>Ksasdaki Məbləğ</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@a @{a++;} </td>
+                    <td>@x.Balance</td>
+                    
+                    
+
+
+
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

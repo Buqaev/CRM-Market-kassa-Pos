@@ -1,0 +1,35 @@
+﻿@model _4YolMarket.Models.OrderDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_KassirLayout.cshtml";
+    //int a = 1;
+}
+
+<db class="container">
+    <form method="post" action="@Url.Action("NewOrder","Order"@*,new { Id=Model.Order.Id}*@)" enctype="multipart/form-data" role="form">
+
+        <a type="submit" class="btn btn-primary">Yeni SatişEt</a><br /><br />
+    </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sıra NO</th>
+                    <th>Tarix</th>
+                    <th>Toplam Məbləğ</th>
+                    <th>Ödənilən Məbləğ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.Orders)
+                {
+                    <tr>
+                        <td>@*@a @{a++;}*@ </td>
+                        <td>@x.Tarix.ToString("dd.MMM.yyyy") </td>
+                        <td>@x.ToplamMebleg</td>
+                        <td>@x.OdenilenMebleg</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</db>
+

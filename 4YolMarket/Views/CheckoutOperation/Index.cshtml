@@ -1,0 +1,161 @@
+﻿@model List<_4YolMarket.Models.KassaEmeliyat>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int a = 1;
+    //string Gelir="Gelir";
+    //string Xerc="Xerc";
+}
+<div class="container">
+    <form role="form" action="@Url.Action("Index","CheckoutOperation")">
+        <div class="row">
+            <div class="col-md-4" style="text-align:center;">
+                <label style="font-size:17px; font-weight:700;" class="">Tarixindən</label>
+                <br />
+                <input style="height: 40px; width: 150px; " @*class="float-right"*@ type="date" name="Tim1" />
+            </div>
+            <div class="col-md-4" style="text-align:center;">
+                <label style="font-size:17px; font-weight:700;">Tarixinədək</label><br />
+                <input style="height:40px; width:150px;" type="date" name="Tim2" />
+            </div>
+            <div class="col-md-4" style=" padding-top:25px;">
+
+                <button style="justify-content: center; background-color:#0094FF; font-size:17px;" type="submit" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                    Axdar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<br />
+<div class="container">
+    <table class="table">
+        <thead style="background-color:whitesmoke; font-size:19px;">
+            <tr>
+                <th>SıraNo </th>
+                <th>Tarix</th>
+                <th>Firma</th>
+                <th>Ümumi Məbləğ</th>
+                <th>Növü</th>
+                <th>Məbləğ</th>
+                <th>Tənzimlə</th>
+            </tr>
+        </thead>
+        <tbody style="font-size: 17px;">
+            @foreach (var x in Model)
+            {
+            <tr>
+                <td>@a @{a++;} </td>
+                <td>@x.Tarix.ToString("dd-MMM-yyyy") </td>
+                <td>
+                    @if (x.Gelir_Xerc_ == false)
+                    {
+                        @x.Purchase.Firma.Ad
+
+                    }
+                </td>
+
+                <td>
+                    @if (x.Gelir_Xerc_ == false)
+                    {
+                        @x.Purchase.ToplamMebleg
+
+                    }
+                    @if (x.Gelir_Xerc_==true &&x.Order!=null)
+                    {
+                        @x.Order.ToplamMebleg
+                    }
+                </td>
+
+                @if (x.Gelir_Xerc_ == true)
+                {
+                    <td><h4 class="bg-primary" style="width:60px; border-radius:20px;  text-align:center; align-content:center">Gəlir</h4></td>
+                }
+                @if (x.Gelir_Xerc_ == false)
+                {
+                    <td><h4 class="bg-danger" style=" width:60px; border-radius:20px;  text-align:center; align-content:center">Xərc</h4></td>
+                }
+                <td>@x.Mebleg</td>
+                <td>
+                    @if (x.OrderId != null)
+                    {
+
+                        <a class="btn" href="@Url.Action("OrderDetay","KassaPos",new {EmelyatId2=x.Id })" style="background-color:#0094ff" title="Detay">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z" />
+                            </svg>
+                        </a>
+
+                    }
+                    @if (x.PurchaseId != null)
+                    {
+                        <a class="btn" href="@Url.Action("BuyList","Purchase",new {EmelyatId=x.Id })" style="background-color:#0094ff" title="Detay">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z" />
+                            </svg>
+                        </a>
+                    }
+                </td>
+
+            </tr>
+
+            }
+
+        </tbody>
+    </table>
+    <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+        <nav class="mt-3">
+            <ul class="pagination pagination-sm" style=" height:40px;">
+                @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                    @if (ViewBag.Page - 1 != 0)
+                    {
+                        <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                    }
+                </li>*@
+                @if (ViewBag.currentPage > 1)
+                {
+                    <li>
+                        <a style="height: 40px; width: 30px; font-size: 17px;" class="page-link" href="~/CheckoutOperation/Index">1</a>
+                    </li>
+                    <li>
+                        @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                        <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("Index","CheckoutOperation",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+
+                    </li>
+                }
+
+
+                @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+                {
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+                }*@
+                @for (var i = ViewBag.startPage; i <= ViewBag.endPage; i++)
+                {
+
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","CheckoutOperation",new { page = i, p = ViewBag.Axtaris, Tim1 = ViewBag.Tim1 , Tim2 = ViewBag.Tim2 })">@i</a></li>
+
+                    @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                        <a href="~/Logs/Index?page=@page">@page</a>
+                    </li>*@
+
+                }
+
+
+                <li class="page-item">
+                    @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                    {
+                        <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("Index","CheckoutOperation",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris , CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Sonrakı</a>
+                    }
+                </li>
+            </ul>
+        </nav>
+
+        <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+    </div>
+    </div>
+
+

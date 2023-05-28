@@ -1,0 +1,243 @@
+﻿@model _4YolMarket.Models.MonyTransferDto
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int a = 1;
+}
+
+
+
+<head>
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+</head>
+<style>
+    .select2-results__option {
+        font-size: 15px !important;
+    }
+
+    .select2-search__field {
+        font-size: 15px !important;
+    }
+</style>
+
+<div class="container">
+    <h1>Transfer(Köçürülmə) Siyahısı</h1><br />
+
+</div>
+<div class="container">
+    <table @*id="must1"*@ style="font-size:15px" class="table table-bordered">
+        <thead>
+            <tr style="font-size:22px;">
+                <th>Sira No:</th>
+
+                <th>Hardan</th>
+                <th>İsdiqamət</th>
+                <th>Vəziyyət</th>
+                <th>Köçürülən Məbləğ</th>
+                @if (Session["UId"] == null && Session["Id"] != null)
+                {
+                    <th>Tənzimlə</th>
+                }
+                </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.moneyTransfers)
+            {
+            <tr style="font-size:19px;">
+                <td>@a @{a++;} </td>
+                @if (x.FromCashBoxId != null)
+                {
+                    <td>@x.CashBox1.Name</td>
+                }
+                @if (x.FromCashBoxId == null)
+                {
+                    <td>Nəğd Kassa</td>
+                }
+                @if (x.ToCashBoxId != null)
+                {
+                    <td>@x.CashBox.Name</td>
+                }
+                @if (x.ToCashBoxId == null)
+                {
+                    <td>Nəğd Kassa</td>
+                }
+                <td>
+                    @if (x.Status == null)
+                    {
+                        <h5 class="bg-warning font-size-bold" style="text-align: center; border-radius: 30px;">Gözləmədə</h5>
+
+                    }
+                    @if (x.Status == true)
+                    {
+                        <h5 class="bg-primary font-size-bold " style="text-align:center; border-radius:30px;"> Köçürmə Təsdiqlənib</h5>
+
+                    }
+                    @if (x.Status == false)
+                    {
+                        <h5 class="bg-danger font-size-bold" style="text-align: center; border-radius: 30px;">Admin İmtina</h5>
+
+                    }
+
+                </td>
+                <td>@x.Mebleg ₼</td>
+                @if (Session["UId"] == null && Session["Id"] != null)
+                {
+                    <td>
+
+                        @if (x.Status == null)
+                        {
+                            <a @*style="border-radius: 50%;"*@ href="@Url.Action("Delate", "MoneyTransfer", new { Id = x.Id })" class="btn btn-danger">Sil</a>
+
+                        }
+                        @if (x.Status == null)
+                        {
+                            <a style="background:#6167E0;" href="@Url.Action("Accept", "MoneyTransfer", new { Id = x.Id})" class="btn">Təsdiqlə</a>
+
+                        }
+
+
+                    </td>
+                }
+
+
+
+
+
+
+
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+        <nav class="mt-3">
+            <ul class="pagination pagination-sm" style=" height:40px;">
+                @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                        @if (ViewBag.Page - 1 != 0)
+                        {
+                            <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                        }
+                    </li>*@
+                @if (ViewBag.currentPage > 1)
+                {
+                    <li>
+                        <a style="height: 40px; width: 30px; font-size: 17px;" class="page-link" href="~/MoneyTransfer/List">1</a>
+                    </li>
+                    <li>
+                        @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                        <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("List","MoneyTransfer",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris})">Əvvəlki</a>
+
+                    </li>
+                }
+
+
+                @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+                    {
+                        <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+                    }*@
+                @for (var i = ViewBag.startPage; i <= ViewBag.endPage; i++)
+                {
+
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("List","MoneyTransfer",new { page = i, p = ViewBag.Axtaris})">@i</a></li>
+
+                    @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                            <a href="~/Logs/Index?page=@page">@page</a>
+                        </li>*@
+
+                }
+
+
+                <li class="page-item">
+                    @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                    {
+                        <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("List","MoneyTransfer",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris })">Sonrakı</a>
+                    }
+                </li>
+            </ul>
+        </nav>
+
+        <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+    </div>
+</div>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">Yeni Müşdəri Əlavə Edin</div>
+            </div>
+            <form id="myform" name="registration" method="post" class="form" action="@Url.Action("AddCustomer","Customer")" enctype="multipart/form-data" role="form">
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Müşdərinin Adı</label>
+                            <input type="text" id="Ad" minlength="2" name="Ad" class="form-control Ad" placeholder="Ad Daxil Edin" title="Mütləq doldurulmalıdır!">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Müşdərinin Soyad</label>
+                            <input required type="text" name="Soyad" class="form-control" placeholder="Soyad Daxil Edin" title="Mütləq doldurulmalıdır!">
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Açıxlama</label>
+                            <input required type="text" name="Description" class="form-control" placeholder="Məsələn:(Aşağı,Yuxarı,Qarahacıl)" title="Mütləq doldurulmalıdır!">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Müşdərinin Borcu</label><br />
+                            <input type="text" style="display:block;" name="Balance" for="exampleInputEmail1" class="form-control" placeholder="0" id="exampleInputEmail1" title="Müşdəri heçbir borcu yoxdursa 0(sfır) daxilet!">
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+
+
+
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Yarat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform").validate({
+        rules: {
+            Ad: {
+                required: true
+            },
+            Soyad: {
+
+                required: true
+            },
+            Description: {
+                required: true
+            },
+            Balance: {
+                required: true
+            }
+
+        }
+    });
+</script>
+

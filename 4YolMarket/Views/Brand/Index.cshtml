@@ -1,0 +1,387 @@
+﻿@model List<_4YolMarket.Models.Brand>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int a = 1;
+}
+<head>
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+
+</head>
+<style>
+    .select2-results__option {
+        font-size: 15px !important;
+    }
+
+    .select2-search__field {
+        font-size: 15px !important;
+    }
+</style>
+
+
+<div class="container">
+    <h1>Məhsul Brendləri</h1><br />
+    <form typeof="Post" action="@Url.Action("Index","Brand")">
+        <select class="js-example-basic-single" name="SelectId" style="font-size:18px; border:2px solid red; ">
+            @foreach (var item in Model)
+            {
+                <option style="" value="@item.Id">@item.Ad</option>
+            }
+
+
+        </select>
+        <button type="submit" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+        </button>
+    </form>
+    <div class="icons d-flex" style="float:right; ">
+
+        <button class="btn ml-2  p-0 btn" data-toggle="modal" data-target="#Modal1" style=" width:50px; height:50px;"
+                id="kt_notes_panel_toggle" title="Əlave Et" data-placement="right"
+                data-original-title="Check out more demos">
+            <span style="width: 45px !important; height: 45px !important;" class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm ">
+
+                <svg style="" width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+            </span>
+
+        </button>
+
+
+    </div>
+</div>
+
+<div class="container">
+
+    <table @*id="must1"*@ style="font-size:15px" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sira No:</th>
+
+                <th>Ad</th>
+
+
+                <th>Yeniləməy üçen</th>
+                <th>Silməy üçün</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@a @{a++;} </td>
+                    <td>@x.Ad</td>
+
+
+
+
+
+                    <td>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#iboform-@x.Id">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                            Yenilə
+                        </button>
+
+
+                        @*//Update Modal*@
+                        <form method="post" role="form" action="@Url.Action("Update","Brand",new {Id=x.Id })" enctype="multipart/form-data">
+
+                            <div class="modal fade" id="iboform-@x.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Brend Yenilə</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="d-flex row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="exampleInputEmail1">Məhsul Adı</label>
+                                                    <input type="text" id="Ad" name="Ad" class="form-control" value="@x.Ad" required="">
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                            <button type="submit" class="btn btn-primary">Yadda Saxla</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        @*//Update Modal*@
+
+
+                    </td>
+
+                    <td>
+                        <a  class="btn btn-danger" href="@Url.Action("Delate","Brand",new {Id=x.Id })" id="brandsil" style="border-radius:12px;">Sil</a>
+                    </td>
+
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+        <nav class="mt-3">
+            <ul class="pagination pagination-sm" style=" height:40px;">
+                @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                    @if (ViewBag.Page - 1 != 0)
+                    {
+                        <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                    }
+                </li>*@
+                @if (ViewBag.currentPage > 1)
+                {
+                    <li>
+                        <a style="height: 40px; width: 30px; font-size: 17px;" class="page-link" href="~/Brand/Index">1</a>
+                    </li>
+                    <li>
+                        @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                        <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("Index","Brand",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris, SelectId = ViewBag.SelectId})">Əvvəlki</a>
+
+                    </li>
+                }
+
+
+                @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+                {
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+                }*@
+                @for (var i = ViewBag.startPage; i <= ViewBag.endPage; i++)
+                {
+
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Brand",new { page = i, p = ViewBag.Axtaris,  SelectId = ViewBag.SelectId })">@i</a></li>
+
+                    @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                        <a href="~/Logs/Index?page=@page">@page</a>
+                    </li>*@
+
+                }
+
+
+                <li class="page-item">
+                    @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                    {
+                        <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("Index","Brand",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris ,  SelectId = ViewBag.SelectId})">Sonrakı</a>
+                    }
+                </li>
+            </ul>
+        </nav>
+
+        <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+    </div>
+</div>
+
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">Yeni Brend Elave Edin</div>
+            </div>
+            <form method="post" id="myform" action="@Url.Action("UpdateBrand","Brand")" enctype="multipart/form-data" role="form">
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+                    <div class="d-flex row">
+                        <div class="form-group col-md-12">
+                            <label for="Ad">Brendin Adı</label>
+                            <input type="text" name="Ad" class="form-control Ad" id="Ad"  title="Mütləq doldurulmalıdır!">
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Yarat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="kt_notes_panel2" class="editpopup offcanvas offcanvas-right kt-color-panel p-5">
+    <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+        <h4 class="font-size-h4 font-weight-bold m-0">
+            Edit Account
+        </h4>
+        <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" id="kt_notes_panel_close2">
+            <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+            </svg>
+        </a>
+    </div>
+    <form id="myform2">
+        <div class="row">
+
+            <div class="col-12">
+                <fieldset id="SubmitForm">
+                    @*@Html.HiddenFor(m => m.Id, new { @id = "UseId" })*@
+                    <div class="form-group">
+
+                        <label class="text-dark">Account No</label>
+                        <input type="text" id="Ad" name="Ad" class="form-control">
+
+                    </div>
+                    <div class="form-group">
+                        <label class="text-dark"> Name</label>
+                        <input type="text" id="UseName" name="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-dark">Initial Balance</label>
+                        <input type="text" name="text" class="form-control" value="12">
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label for="label-textarea2">Note</label>
+                            <fieldset class="form-label-group">
+                                <textarea class="form-control" id="label-textarea2" rows="3" placeholder="Note">this is first Account</textarea>
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit Account</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<script>
+    $("#brandsil").click(function (e) {
+        var r = confirm("Məhsulu silməy isdədiyindən əminsən?(Əgər məhsulu silməyəcəysənsə [Cancel] düyməsinə bas)");
+
+        //cancel clicked : stop button default action
+        if (r === false) {
+            return false;
+        }
+
+        //action continues, saves in database, no need for more code
+
+
+    });
+</script>
+
+<script>
+    $("#LoadingStatus").html("Loading....");
+    $.get("/Groud/GetUserList", null, DataBind);
+    function DataBind(UserList) {
+        var SetData = $("#SetUserList");
+        for (var i = 0; i < UserList.length; i++) {
+
+            var Data = "<tr class='row_" + UserList[i].Id + "'>" +
+                "<td>" + UserList[i].Id + "</td>" +
+                "<td>" + UserList[i].Ad + "</td>" +
+                "<td>" + "<a href='#' class='btn btn-warning' onclick='EditUserRecoverd(" + UserList[i].Id + ")'><span class='glyphicon glyphicon-edit'></span></a>" + "</td>" +
+                "<td>" + "<a href='#' class='btn btn-danger' onclick='DeleteUserRecoverd(" + UserList[i].Id + ")'><span class='glyphicon glyphicon-trash'></span></a>" + "</td>" +
+                "</tr>";
+            SetData.append(Data);
+            $("#LoadingStatus").html(" ");
+        }
+    }
+
+
+    function AddNewUser(UserId) {
+        $("#form")[0].reset();
+        $("#UseId").val(0);
+        //$("#DropDown option:selected").text("--Select--");
+        $("#ModelTitle").html("Add New User");
+        $("#MyModel").modal();
+    }
+
+    function EditUserRecoverd(UserId) {
+
+        var url = "/Brand/GetUserById?UserId=" + UserId;
+
+        $("#kt_notes_panel2").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                /*$("#Ad").val(obj.Id);*/
+                $("#UseName").val(obj.Ad);
+                //$("#DropDown option:selected").text(obj.tblDepartmen.DepatmenAd);
+                //$("#DropDown option:selected").val(obj.DepartmenId.DepatmenAd);
+
+            }
+        })
+    }
+
+    $("#SaveUserRecort").click(function () {
+
+        var data = $("#SubmitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Groud/SaveDateInDateBase",
+            data: data,
+            success: function (result) {
+                alert("Succes!...");
+                window.location.href = "/Groud/Index";
+                $("#MyModel").modal("hide");
+            }
+        })
+    })
+
+
+
+
+
+
+
+
+</script>
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform").validate({
+        rules: {
+            Ad: {
+                required: true
+            }
+        }
+    });
+</script>

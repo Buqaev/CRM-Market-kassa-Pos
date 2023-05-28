@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "FirmaDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="@Url.Action("Detay","Firma", new {Id = Model.Firma.Id})" enctype="multipart/form-data" role="form">
+
+    <div class="card-body">
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;" for="exampleInputEmail1">Ad</label>
+            <input style="height:70px;  font-size:20px;" type="text" value="@Model.Firma.Ad" class="form-control" id="exampleInputEmail1">
+        </div>
+
+
+
+
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;" for="exampleInputEmail1">Borc</label>
+            <input style="height:70px;  font-size:20px;" type="text" value="@Model.Firma.Balance" class="form-control" id="exampleInputEmail1" placeholder="Ad Metn Edin">
+        </div>
+        <div class="form-group" style="height:90px;">
+            <label style="font-size: 15px;" for="exampleInputEmail1">Ödəniləcək Məbləğ</label>
+            <input style="height:70px; width:150px; font-size:20px;" type="text" name="Mebleg" value="" class="form-control" id="exampleInputEmail1" placeholder="Məbləği Daxil Et">
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Yenile</button>
+    </div>
+@*</form>*@
+

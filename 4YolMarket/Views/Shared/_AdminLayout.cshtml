@@ -1,0 +1,852 @@
+﻿
+<!DOCTYPE html>
+<!--
+Template Name: Kundol Admin - Bootstrap 4 HTML Admin Dashboard Theme
+Author: Themescoder
+Website: http://www.themescoder.net/
+Contact: support@themescoder.net
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html lang="en">
+<!--begin::Head-->
+<!-- Mirrored from kundol.themes-coder.net/admin-demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Oct 2022 18:43:38 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>4YolMarket</title>
+    <meta name="description" content="Updates and statistics" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!--begin::Fonts-->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" /> -->
+    <!--end::Fonts-->
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="~/admin-demo/assets/css/stylec619.css?v=1.0" rel="stylesheet" type="text/css" />
+    <!--end::Global Theme Styles-->
+
+    <link href="~/admin-demo/assets/api/pace/pace-theme-flat-top.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin-demo/assets/api/mcustomscrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin-demo/assets/api/datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+    <link rel="shortcut icon" href="~/admin-demo/assets/media/logos/favicon.html" />
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+
+
+    <style>
+        #meh1_filter, .form-control {
+            height: 35px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="tc_body" class="header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed">
+    <!-- Paste this code after body tag -->
+    <div class="se-pre-con">
+        <div class="pre-loader">
+            <img class="img-fluid" src="~/admin-demo/assets/images/loadergif.gif" alt="loading">
+        </div>
+    </div>
+    <!--begin::Header Mobile-->
+    <div id="tc_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+        <!--begin::Logo-->
+        <a href="index-2.html" class="brand-logo">
+
+            <span class="brand-text"><img style="height: 25px;" alt="Logo" src="~/admin-demo/assets/images/misc/logo.png"></span>
+
+        </a>
+        <!--end::Logo-->
+        <!--begin::Toolbar-->
+        <div class="d-flex align-items-center">
+
+            <div class="posicon">
+                <a href="pos.html" class="btn btn-primary d-flex align-items-center justify-content-center white mr-2">POS</a>
+            </div>
+            <button class="btn p-0" id="tc_aside_mobile_toggle">
+                <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-justify-right" fill="currentColor"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                          d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+
+            <button class="btn p-0 ml-2" id="tc_header_mobile_topbar_toggle">
+                <span class="svg-icon svg-icon-xl">
+
+                    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+
+                </span>
+            </button>
+
+        </div>
+        <!--end::Toolbar-->
+
+    </div>
+
+    <!--end::Header Mobile-->
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+
+        <div class="d-flex flex-row flex-column-fluid page">
+
+            <div>
+                <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="tc_aside">
+                    <!--begin::Brand-->
+                    <div class="brand flex-column-auto" id="tc_brand" style="width:100px!important; height:100px!important;">
+                        <!--begin::Logo-->
+
+                        <a href="index-2.html" class="brand-logo">
+                            <img class="brand-image" style="height: 35px;" alt="Logo" src="~/admin-demo/assets/images/profiles/4yol.png.jpg" />
+                            <span class="brand-text">
+                                <img style="height: 80px;" alt="Logo"
+                                     src="~/admin-demo/assets/images/profiles/4yol.png.jpg" />
+                            </span>
+
+                        </a>
+                        <!--end::Logo-->
+
+
+                    </div>
+                    <!--end::Brand-->
+                    <!--begin::Aside Menu-->
+                    <div class="aside-menu-wrapper flex-column-fluid overflow-auto h-100" id="tc_aside_menu_wrapper">
+                        <!--begin::Menu Container-->
+                        <div id="tc_aside_menu" class="aside-menu  mb-5" data-menu-vertical="1" data-menu-scroll="1"
+                             data-menu-dropdown-timeout="500">
+                            <!--begin::Menu Nav-->
+                            <div id="accordion" style="margin-bottom:100px;">
+                                <ul class="nav flex-column " style="font-size:20px!important; font-weight:700; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                    @if (Session["UId"] == null && Session["Id"] != null)
+                                    {
+                                <li class="nav-item ">
+                                    <a href="@Url.Action("Index", "Dashboard")" class="nav-link ">
+                                        <span class="svg-icon nav-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                            </svg>
+                                        </span>
+                                        <span class="nav-text">
+                                            İdarə Paneli
+                                        </span>
+                                    </a>
+
+
+                                </li>}
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="collapse" href="javascript:void(0)" data-target="#catalog" role="button"
+                                           aria-expanded="false" aria-controls="catalog">
+                                            <span class="svg-icon nav-icon">
+                                                <i class="fas fa-boxes font-size-h4"></i>
+                                            </span>
+                                            <span class="nav-text">Kataloq</span>
+                                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                                        </a>
+                                        <div class="collapse nav-collapse" id="catalog" data-parent="#accordion">
+                                            <div id="accordion1">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                        <a href="@Url.Action("Index","Product")" class="nav-link sub-nav-link">
+                                                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="nav-text">Məhsullar</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="@Url.Action("Index","Stock")" class="nav-link sub-nav-link">
+                                                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="nav-text">Anbar</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="@Url.Action("Index","Brand")" class="nav-link sub-nav-link">
+                                                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="nav-text">Brendlər</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="@Url.Action("Index","Category")" class="nav-link sub-nav-link">
+                                                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="nav-text">Məhsul Kateqoryaları</span>
+                                                        </a>
+                                                    </li>
+
+
+
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @if (Session["UId"] == null && Session["Id"] != null)
+                                    {
+                                <li class="nav-item">
+                                    <a class="nav-link " href="@Url.Action("Index", "CheckoutOperation")"
+                                       aria-expanded="false" aria-controls="catalogPurchase">
+                                        <span class="svg-icon nav-icon">
+                                            <i class="fas fa-money-check-alt font-size-h4"></i>
+                                        </span>
+                                        <span class="nav-text">Kassa Əməlyat</span>
+
+                                    </a>
+
+                                </li>}
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","PurcHase")"
+                                           aria-expanded="false" aria-controls="order">
+                                            <span class="svg-icon nav-icon">
+                                                <i class="fas fa-clipboard-check font-size-h4"></i>
+                                            </span>
+                                            <span class="nav-text">Məhsul QəbulEt</span>
+
+                                        </a>
+
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="collapse" href="#setting" role="button"
+                                           aria-expanded="false" aria-controls="setting">
+                                            <span class="svg-icon nav-icon">
+                                                <i class="fas fa-user-friends font-size-h4"></i>
+                                            </span>
+                                            <span class="nav-text">Əlaqələr</span>
+                                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                                        </a>
+                                        <div class="collapse nav-collapse" id="setting" data-parent="#accordion">
+                                            <div id="accordion3">
+                                                <ul class="nav flex-column">
+                                             
+                                                    <li class="nav-item">
+                                                        <a href="@Url.Action("Index","Customer")" class="nav-link sub-nav-link">
+                                                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="nav-text">Müşdərilər</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="@Url.Action("Index","Firma")" class="nav-link sub-nav-link">
+                                                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="nav-text">Firmalar</span>
+                                                        </a>
+                                                    </li>
+                                                     @if (Session["UId"] == null)
+                                                     {
+                                                    <li class="nav-item">
+                                                        <a href="@Url.Action("Index", "User")" class="nav-link sub-nav-link">
+                                                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                </svg>
+                                                            </span>
+                                                            <span class="nav-text">İşçilər</span>
+                                                        </a>
+                                                    </li>
+                                                     }
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="collapse" href="#Returns" role="button"
+                                           aria-expanded="false" aria-controls="Returns">
+                                            <span class="svg-icon nav-icon">
+                                                <i class="fas fa-undo-alt font-size-h4"></i>
+                                            </span>
+                                            <span class="nav-text">Geri Transfer</span>
+                                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                                        </a>
+                                        <div class="collapse nav-collapse" id="Returns" data-parent="#accordion">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index","Return")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Məhsul Qaytarn</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("List","Return")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Siyahı</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("CustomerReturns","Return")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Geri Alış</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                               
+                                
+                                    @*@if (Session["UId"] == null && Session["Id"] != null)
+                                            {
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Kassa", "Kassa")"
+                                               aria-expanded="false" aria-controls="account">
+                                                <span class="svg-icon nav-icon">
+                                                    <i class="fas fa-file-invoice-dollar font-size-h4"></i>
+                                                </span>
+                                                <span class="nav-text">Kassadan pulçək</span>
+
+                                            </a>
+
+                                        </li>
+        }*@
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="collapse" href="#catalogPurchase" role="button"
+                                           aria-expanded="false" aria-controls="catalogPurchase">
+                                            <span class="svg-icon nav-icon">
+                                                <i class="fas fa-file-invoice-dollar font-size-h4"></i>
+                                            </span>
+                                            <span class="nav-text">Kassa</span>
+                                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                                        </a>
+                                        <div class="collapse nav-collapse" id="catalogPurchase" data-parent="#accordion">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Medaxil", "Kassa")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Mədaxil</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Kassa", "Kassa")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Məxaric</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("List", "Kassa")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Siyahı</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                    @if (Session["UId"] != null)
+                                    {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Order", "KassaPos")"
+                                       aria-expanded="false" aria-controls="expenses">
+                                        <span class="svg-icon nav-icon">
+                                            <i class="fas fa-money-bill font-size-h4"></i>
+                                        </span>
+                                        <span class="nav-text">Satış Et</span>
+
+                                    </a>
+
+                                </li>
+}
+
+                                    @if (Session["UId"] == null)
+                                    {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Index", "Logs")"
+                                       aria-expanded="false" aria-controls="expenses">
+                                        <span class="svg-icon nav-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z" />
+                                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                            </svg>
+                                        </span>
+                                        <span class="nav-text">Qeydlər</span>
+
+                                    </a>
+
+                                </li>
+
+                                          
+}
+
+                                  <li class="nav-item" style="padding-bottom:30px; ">
+                                        <a class="nav-link" data-toggle="collapse" href="#Quotations" role="button"
+                                           aria-expanded="false" aria-controls="Quotations">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                                            </svg>
+                                            <span class="nav-text">Pul Köçürmə</span>
+                                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                                        </a>
+                                        <div class="collapse nav-collapse" id="Quotations" data-parent="#accordion">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("List","MoneyTransfer")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Köçürülmə Siyahı</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index","MoneyTransfer")" class="nav-link sub-nav-link">
+                                                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="nav-text">Köçürmə Et</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!--end::Menu Nav-->
+                        </div>
+                        <!--end::Menu Container-->
+                    </div>
+                    <!--end::Aside Menu-->
+                </div>
+            </div>
+            <!--begin::Aside-->
+
+            <div class="aside-overlay"></div>
+            <!--end::Aside-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="tc_wrapper">
+                <!--begin::Header-->
+                <div id="tc_header" class="header header-fixed">
+                    <!--begin::Container-->
+                    <div class="container-fluid d-flex align-items-stretch justify-content-between">
+                        <!--begin::Header Menu Wrapper-->
+                        <div class="header-menu-wrapper header-menu-wrapper-left" id="tc_header_menu_wrapper">
+                            <!--begin::Header Menu-->
+                            <div id="tc_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+                                <!--begin::Header Nav-->
+                                <ul class="menu-nav">
+
+                                    <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active p-0"
+                                        data-menu-toggle="click" aria-haspopup="true">
+                                        <!--begin::Toggle-->
+                                        <div class="btn  btn-clean btn-dropdown mr-0 p-0" id="tc_aside_toggle">
+                                            <span class="svg-icon svg-icon-xl svg-icon-primary">
+
+                                                <svg width="24px" height="24px" viewBox="0 0 16 16" class="bi bi-list"
+                                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                          d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <!--end::Toolbar-->
+                                    </li>
+
+                                </ul>
+                                <!--end::Header Nav-->
+                            </div>
+                            <!--end::Header Menu-->
+                        </div>
+                        <!--end::Header Menu Wrapper-->
+                        <!--begin::Topbar-->
+                        <div class="topbar">
+
+                            <div class="topbar-item">
+                                <div class="quick-search quick-search-inline ml-20 mr-1 w-300px"
+                                     id="kt_quick_search_inline">
+                                    <!--begin::Form-->
+                                    <form method="get" class="quick-search-form" action="@Url.Action("Index","Stock")">
+                                        <div class="input-group rounded bg-light">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="svg-icon svg-icon-lg">
+                                                        <svg width="20px" height="20px" viewBox="0 0 16 16"
+                                                             class="bi bi-search" fill="currentColor"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                  d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                                            <path fill-rule="evenodd"
+                                                                  d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="Ad" class="form-control h-45px" placeholder="Məhsul Adı...">
+                                            <div class="posicon d-lg-block d-none">
+                                                <button type="submit" class="btn btn-primary white mr-2">Axdar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--end::Form-->
+                                    <!--begin::Search Toggle-->
+                                    <div id="kt_quick_search_toggle" data-toggle="dropdown" data-offset="0px,1px"></div>
+                                    <!--end::Search Toggle-->
+                                    <!--begin::Dropdown-->
+                                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg dropdown-menu-anim-up">
+                                        <div class="quick-search-wrapper scroll ps" data-scroll="true" data-height="350"
+                                             data-mobile-height="200" style="height: 350px; overflow: hidden;">
+                                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;">
+                                                </div>
+                                            </div>
+                                            <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Dropdown-->
+                                </div>
+                            </div>
+                            <!--begin::Languages-->
+                            @*<div class="dropdown">
+
+                        <div class="topbar-item" data-toggle="dropdown" data-display="static">
+                            <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+                                <img class="h-20px w-20px rounded-sm"
+                                     src="assets/images/svg/flags/226-united-states.svg" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item">
+                                <span class="symbol symbol-20 mr-3">
+                                    <img class="h-20px w-20px rounded-sm"
+                                         src="assets/images/svg/flags/226-united-states.svg" alt="" />
+                                </span>
+                                English
+                            </a>
+
+                        </div>
+
+                    </div>*@
+                            <!--end::Languages-->
+                            <!--begin::Quick Actions-->
+                            <div class="dropdown">
+
+                                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+                                    <div id="kt_open_fullscreen" class="btn btn-icon btn-clean btn-dropdown mr-1" title="fullscreen"
+                                         onclick="openFullscreen();">
+                                        <span class="svg-icon svg-icon-xl svg-icon-primary">
+
+                                            <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-fullscreen"
+                                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                      d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
+                                            </svg>
+
+
+
+                                        </span>
+
+                                    </div>
+
+                                    <div id="kt_close_fullscreen" class="btn btn-icon btn-clean btn-dropdown mr-1"
+                                         onclick="closeFullscreen();" style="display: none;">
+                                        <span class="svg-icon svg-icon-xl svg-icon-primary">
+                                            <svg width="20px" height="20px" viewBox="0 0 16 16"
+                                                 class="bi bi-fullscreen-exit" fill="currentColor"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                      d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div class="dropdown">
+
+                                <div class="topbar-item" data-toggle="dropdown" data-display="static">
+                                    <div class="btn btn-icon w-auto btn-clean d-flex align-items-center pr-1 pl-3">
+                                        <span class="text-dark-50 font-size-base d-none d-xl-inline mr-3">
+                                            @Session["Soyad"]
+                                            @Session["Ad"]
+
+
+                                        </span>
+                                        <span class="symbol symbol-35 symbol-light-success">
+                                            <span class="symbol-label font-size-h5 ">
+                                                <svg width="20px" height="20px" viewBox="0 0 16 16"
+                                                     class="bi bi-person-fill" fill="currentColor"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                          d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu dropdown-menu-right" style="min-width: 150px;">
+
+
+
+                                    <a href="@Url.Action("LoginOut","Login")" class="dropdown-item">
+                                        <span class="svg-icon svg-icon-xl svg-icon-primary mr-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-power">
+                                                <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                                                <line x1="12" y1="2" x2="12" y2="12"></line>
+                                            </svg>
+                                        </span>
+                                        Sistemdən Çıx
+                                    </a>
+                                    @if (Session["UId"] == null && Session["Id"] != null)
+                                    {
+                        <a href="@Url.Action("Index", "Admin")" class="dropdown-item">
+                            <span class="svg-icon svg-icon-xl svg-icon-primary mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="currentColor" class="bi bi-person-gear" viewBox="0 0 16 16">
+                                    <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.148ZM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+                                </svg>
+                            </span>
+                            Admin Məlumat
+                        </a>}
+
+                                </div>
+
+                            </div>
+                            <!--end::user-->
+
+
+                        </div>
+                        <!--end::Topbar-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+               
+               
+                @RenderBody()
+
+                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+
+        </div>
+        <!--end::Page-->
+
+    </div>
+    <!--end::Main-->
+
+
+
+    <ul class="sticky-toolbar nav flex-column bg-primary" title="Setting">
+
+        <li class="nav-item" id="kt_demo_panel_toggle" data-toggle="tooltip" title="" data-placement="right"
+            data-original-title="Check out more demos">
+            <a class="btn btn-sm btn-icon text-white" href="#">
+                <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-gear fa-spin" fill="currentColor"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                          d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+                    <path fill-rule="evenodd"
+                          d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+                </svg>
+            </a>
+        </li>
+    </ul>
+
+    @*<a href="/Satis/YeniSatis" class="btn btn-info">Yeni Satış Yap</a>*@
+
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+    <script>
+
+        $('#tbl1').dataTable({});
+        $('#adm1').dataTable({});
+        $('#meh1').dataTable({});
+        $('#kas1').dataTable({});
+        $('#must1').dataTable({});
+        $('#purc1').dataTable({});
+        $('#purc2').dataTable({});
+        $('#stokc1').dataTable({});
+        $('#kasop').dataTable({});
+        $('#axtar').dataTable({});
+        $('#ord').dataTable({});
+        $('#log').dataTable({});
+        $('#firm').dataTable({});
+        $('#lis').dataTable({});
+        $('#rvrt').dataTable({});
+
+    </script>
+ 
+
+
+    <script src="~/admin-demo/assets/js/plugin.bundle.min.js"></script>
+    <script src="~/admin-demo/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/admin-demo/assets/api/jqueryvalidate/jquery.validate.min.js"></script>
+    <script src="~/admin-demo/assets/api/apexcharts/apexcharts.js"></script>
+    <script src="~/admin-demo/assets/api/apexcharts/scriptcharts.js"></script>
+    <script src="~/admin-demo/assets/api/pace/pace.js"></script>
+    <script src="~/admin-demo/assets/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/admin-demo/assets/api/quill/quill.min.js"></script>
+    <script src="~/admin-demo/assets/api/datatable/jquery.dataTables.min.js"></script>
+
+    <script src="~/admin-demo/assets/js/script.bundle.js"></script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var options = {
+            debug: 'info',
+            modules: {
+                toolbar: '#toolbar'
+            },
+            placeholder: 'Compose an epic...',
+            readOnly: true,
+            theme: 'snow'
+        };
+        var editor = new Quill('#editor', options);
+
+
+        jQuery(document).ready(function () {
+            jQuery('#myTable').DataTable();
+        });</script>
+
+</body>
+    <!--end::Body-->
+    <!-- Mirrored from kundol.themes-coder.net/admin-demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Oct 2022 18:44:20 GMT -->
+</html>
+
+@*<script>
+    var links = document.querySelectorAll(".nav li");
+        links.forEach(li => {
+            li.addEventListener("click", () => {
+                resetLinks();
+                li.classList.add("active");
+            });
+
+        });
+        function resetLinks() {
+            links.forEach(li => {
+                li.classList.remove("active");
+            });
+        }
+    </script>*@
+
+@*<script>
+    var selector = '.nav li';
+
+    $(selector).on('click', function () {
+        $(selector).removeClass('active');
+        $(this).addClass('active');
+        
+       
+    });
+</script>*@
+
+<script>
+    $(document).ready(function () {
+        $('ul li a').click(function () {
+            $('li a').removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.js-example-basic-single').select2();
+    });
+</script>

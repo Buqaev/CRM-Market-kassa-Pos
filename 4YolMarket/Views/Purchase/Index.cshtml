@@ -1,0 +1,533 @@
+﻿@model _4YolMarket.Models.AlisDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int a = 1;
+}
+
+<style>
+    .select2-results__option {
+        font-size: 15px !important;
+    }
+
+    .select2-search__field {
+        font-size: 15px !important;
+    }
+</style>
+<div class="container">
+    <div class="row" style=" height:100%!important; width:100%!important;">
+        <div class="col-md-12">
+            <form method="get" style=" height:50px;" class="d-flex" action="@Url.Action("Index","Purchase")">
+
+                <div class="col-md-3 " style="height:90px!important;">
+                    <label>Firma</label>
+                    <div class=" d-flex" style="height:50px; width:200px;">
+                        <select name="FirmaId" style="height: 50px; background-color:white; width:100%;  border-radius:10px;" aria-label="Vehicle Year">
+                            <option name="FirmaId" value="none">Firma Seç</option>
+
+                            @foreach (var x in Model.Firmas)
+                            {
+                                <option value="@x.Id">@x.Ad</option>
+
+                            }
+
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 " style="height:90px!important;">
+                    <label>Tarixdən</label>
+                    <input style="width: 100%; height: 50px; border-radius:10px; " type="date" name="Tim" />
+                </div>
+                <div class="col-md-3 " style="height:90px!important;">
+                    <label>Tarixədək</label>
+                    <input style="width: 100%; height: 50px; border-radius:10px; " type="date" name="Tim2" />
+                </div>
+                <div class="col-md-3 " style="height:90px!important;">
+                    <button class="btn" style="height: 60px; margin-top:20px; background-color: #34BFA3;" type="submit">Axtar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+
+
+
+    <div class="icons d-flex" style="float:right; ">
+
+        <button class="btn ml-2  p-0 btn" data-toggle="modal" data-target="#newOrderModal" style=" width:50px; height:50px;"
+                id="kt_notes_panel_toggle" title="Əlave Et" data-placement="right"
+                data-original-title="Check out more demos">
+            <span style="width: 45px !important; height: 45px !important;" class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm ">
+
+                <svg style="" width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+            </span>
+
+        </button>
+
+
+    </div>
+</div>
+<hr />
+<div class="container">
+
+    <table class="table" @*id="purc1"*@>
+        <thead style="background-color: whitesmoke; font-size: 19px;">
+            <tr style="">
+                <th>Sıra No:</th>
+                <th>Vəziyyəti</th>
+                <th>Firma Adı</th>
+                <th>Alinma Tarixi</th>
+                <th>Toplam Məbləğ</th>
+                <th>Bizim Ödədiyimiz Məbləğ</th>
+                <th>Məhsullar</th>
+                @if (Session["UId"] == null && Session["Id"] != null)
+                {
+                    <th>Tənzimlə</th>
+                }
+            </tr>
+        </thead>
+        <tbody style="font-size: 17px;">
+            @foreach (var x in Model.Purchases)
+            {
+                <tr>
+                    <td> @a @{a++;} </td>
+                    <td>
+                        @if (x.Veziyyet == null)
+                        {
+                            <h5 class="bg-warning font-size-bold" style="text-align: center; border-radius: 30px;">Gözləmədə</h5>
+
+                        }
+                        @if (x.Veziyyet == true)
+                        {
+                            <h5 class="bg-primary font-size-bold " style="text-align:center; border-radius:30px;"> Satışa Hazırdır</h5>
+
+                        }
+                        @if (x.Veziyyet == false)
+                        {
+                            <h5 class="bg-danger font-size-bold" style="text-align: center; border-radius: 30px;">Admin İmtina</h5>
+
+                        }
+
+                    </td>
+                    <td>@x.Firma.Ad</td>
+                    <td>@x.Tarix.ToString("dd/MM/yyyy")</td>
+                    <td>@x.ToplamMebleg</td>
+                    <td>@x.OdenilenMebleg</td>
+                    <td>
+                        <button data-toggle="modal" data-target="#iboform-@x.Id" class="btn" style="width:55px; height:55px; background:#6167E0;border-radius:100%; padding-right:55px;">
+
+                            <svg @*style="width: 50px; height: 50px; background: #6167E0; border-radius: 100%; "*@ xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                            </svg>
+
+                        </button>
+
+                        <div class="modal fade" id="iboform-@x.Id">
+                            <div class="modal-dialog modal-lg" style=" width: 900px !important;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+
+                                    </div>
+
+                                    <div class="container" style="background-color:white;">
+                                        <table @*style="height: 500px;"*@ class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Məhsulun Adı</th>
+                                                    <th>İsdehsal Tarixi</th>
+                                                    <th>Sonİsdifadə Tarixi</th>
+                                                    <th>Alış Qiymət</th>
+                                                    <th>Say/Çəki(ədəd/kg)</th>
+                                                </tr>
+
+
+                                            </thead>
+                                            <tbody style=" ">
+                                                @*@if (x.Id==Model.Purchase.Id)
+
+                                                    }*@
+                                                @foreach (var z in Model.PurchaseItems)
+                                                {
+                                                    if (z.PurchaseId == x.Id)
+                                                    {
+
+
+                                                        <tr>
+                                                            <td>@z.Product.Ad</td>
+                                                            <td>@z.IstehsalTarixi</td>
+                                                            <td>@z.BitmeTarixi</td>
+                                                            <td>@z.AlisMebleg</td>
+                                                            <td>@z.Say_Ceki_</td>
+
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+
+
+
+                    @if (Session["UId"] == null && Session["Id"] != null)
+                    {
+                        <td>
+                            <a @*style="border-radius:50%;"*@ href="@Url.Action("BuyList", "Purchase", new { Id = x.Id })" class="btn btn-primary">Detay</a>
+                            @if (x.Veziyyet == null)
+                            {
+                                <a @*style="border-radius: 50%;"*@ href="@Url.Action("BuyDelate", "Purchase", new { Id = x.Id })" class="btn btn-danger">Sil</a>
+
+                            }
+                            @if (x.Veziyyet == null)
+                            {
+                                <a style="background:#6167E0;" href="@Url.Action("Confirm", "Purchase", new { Id = x.Id,firma=x.FirmaId })" class="btn">Təsdiqlə</a>
+
+                            }
+                            @if (x.Veziyyet == true)
+                            {
+                                <a title="Ödəniş Et" style="background:#5867DD;" href="@Url.Action("Expenses", "Kassa", new { Id =x.Id})" class="btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" color="white" width="25" height="25" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+                                        <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z" />
+                                    </svg>
+
+                                </a>
+
+
+
+                            }
+
+                        </td>
+                    }
+
+
+
+
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+        <nav class="mt-3">
+            <ul class="pagination pagination-sm" style=" height:40px;">
+                @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                    @if (ViewBag.Page - 1 != 0)
+                    {
+                        <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                    }
+                </li>*@
+                @if (ViewBag.currentPage > 1)
+                {
+                    <li>
+                        <a style="height: 40px; width: 30px; font-size: 17px;" class="page-link" href="~/Purchase/Index">1</a>
+                    </li>
+                    <li>
+                        @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                        <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("Index","Purchase",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris,FirmaId=ViewBag.FirmaId,Tim2=ViewBag.Tarix2,Tim=ViewBag.Tarix})">Əvvəlki</a>
+
+                    </li>                                                                                         
+                   
+                }
+
+
+                @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+                {
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+                }*@
+                @for (var i = ViewBag.startPage; i <= ViewBag.endPage; i++)
+                {
+
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Purchase",new { page = i, p = ViewBag.Axtaris, FirmaId=ViewBag.FirmaId,Tim2=ViewBag.Tarix2,Tim=ViewBag.Tarix})">@i</a></li>
+
+                    @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                        <a href="~/Logs/Index?page=@page">@page</a>
+                    </li>*@
+
+                }
+
+
+                <li class="page-item">
+                    @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                    {
+                        <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("Index","Purchase",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris , FirmaId=ViewBag.FirmaId,Tim2=ViewBag.Tarix2,Tim=ViewBag.Tarix})">Sonrakı</a>
+                    }
+                </li>
+            </ul>
+        </nav>
+
+        <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+    </div>
+</div>
+
+<div class="modal fade" id="newOrderModal">
+    <div class="modal-dialog modal-lg" style=" width: 900px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Alış Qeyd Et</h4>
+            </div>
+            <form id="NewOrderForm" method="post" action="@Url.Action("SaveOrder","Purchase")">
+                <div class="modal-body">
+                    @*Customer Details*@
+                    <h5 style="color:#ff6347">Alış </h5>
+                    <hr />
+                    <div class="form-horizontal">
+
+                        <input type="hidden" id="Faturaid" />
+
+                        <div class="form-group d-flex">
+
+
+
+                            <div class="col-md-4">
+                                <label class="control-label col-md-2"> ToplamMəbləğ</label>
+
+
+
+                                <input type="text" id="topmeb" name="topmeb" placeholder="Ödəniləcək Ümumi Məbləğ" class="form-control" title="Mütləq doldurulmalıdır!" />
+
+                            </div>
+
+
+
+
+                            @*<div class="col-md-4">
+                                <label class="control-label col-md-2">ÖdənilənMəbləğ</label>
+
+
+
+                                <input type="text" id="odenmeb" name="odenmeb" placeholder="Ödəniş olunmamışsa sıfır(0) daxilet" class="form-control" />
+
+                            </div>*@
+                            <div class="col-md-4">
+
+                                <label for="exampleInputEmail1">Firma Adı</label>
+                                @*<select name="firma" class="form-control" id="firma">*@
+                                <select class="js-example-basic-single" id="firma" name="firma" style="font-size:18px;">
+                                    <option>--Secin</option>
+                                    @foreach (var n in @ViewBag.firma)
+
+                                    {
+                                        <option value="@n.Id">@n.Ad</option>
+                                    }
+
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group d-flex">
+
+
+
+                            
+                        </div>
+
+                    </div>
+
+                    @*Order Details*@
+                    <h5 style="margin-top:10px;color:#ff6347">Məhsulları Daxil Et</h5>
+                    <hr />
+                    <div class="form-horizontal col-md-12">
+                        <input type="hidden" id="OrderId" />
+                        <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
+                                <label for="exampleInputEmail1">Məhsul</label>
+                                @*<select name="ProductId" class="form-control" id="mehsul">*@
+                                <select class="js-example-basic-single" id="mehsul" name="ProductId" style="font-size:18px;">
+                                    <option>--Secin</option>
+                                    @foreach (var x in @ViewBag.product)
+
+                                    {
+                                        <option value="@x.Id">@x.Ad</option>
+                                    }
+
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="qiymet">Alış Qiyməti</label>
+                                <input type="text" id="qiymet" name="AlisMebleg" class="form-control" placeholder="Məbləği Daxil Edin" title="Mütləq doldurulmalıdır!">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group d-flex col-md-12">
+
+                            <div class="form-group col-md-4">
+                                <label for="exampleInputEmail1">İsdehsal Tarixi</label>
+                                <input type="text" id="isdehsaltarix" name="IstehsalTarixi" class="form-control" placeholder="01/01/2011">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="exampleInputEmail1">Son İsdifadə Tarixi</label>
+                                <input type="text" id="bitmetarix" name="BitmeTarixi" class="form-control" placeholder="01/01/2011">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="exampleInputEmail1">Say(Kloqram)</label>
+                                <input type="text" id="miqdar" name="Say_Ceki_" class="form-control" placeholder="Sayını vəya Kloqramnı Daxilet">
+                            </div>
+
+                        </div>
+                        <div class="col-md-2 col-lg-offset-4 float-right" style="padding-bottom:5px;">
+                            <a id="addToList" class="btn btn-primary ">Siyahıya əlavə et</a>
+                        </div>
+
+                        <table id="detailsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%">Məhsul</th>
+                                    <th style="width:20%">Alış Qiyməti</th>
+                                    <th style="width:15%">İstehsalTarixi</th>
+                                    <th style="width:25%">Son İsdifadə Tarixi</th>
+                                    <th style="width:25%">Miqdar(Say,Kq)</th>
+                                    <th style="width:10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Ləğvet</button>
+                    <button id="saveOrder" type="submit" class="btn btn-danger">Sifarişi Təsdiqlə</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+@*<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#NewOrderForm").validate({
+        rules: {
+            topmeb: {
+                required: true
+            },
+            AlisMebleg: {
+                required: true
+            }
+        }
+    });
+</script>*@
+
+<script>
+    //Show Modal.
+    function addNewOrder() {
+        $("#newOrderModal").modal();
+    }
+    //Add Multiple Order.
+    $("#addToList").click(function (e) {
+        e.preventDefault();
+
+        if ($.trim($("#mehsul").val()) == "" || $.trim($("#qiymet").val()) == "" || $.trim($("#isdehsaltarix").val()) == "" || $.trim($("#bitmetarix").val()) == "" || $.trim($("#miqdar").val()) == "") return;
+
+        var MehsulID = $("#mehsul").val(),
+            Mehsulname = $("#mehsul option:selected").text(),
+            Qiymet = $("#qiymet").val(),
+            IstehsalTarix = $("#isdehsaltarix").val(),
+            BitmeTarix = $("#bitmetarix").val(),
+            Say = $("#miqdar").val(),
+            detailsTableBody = $("#detailsTable tbody");
+
+        var productItem = '<tr><td>' + Mehsulname + '</td><td>' + Qiymet + '</td><td>' + IstehsalTarix + '</td><td>' + BitmeTarix + '</td><td>' + Say + '</td><td>' + MehsulID + '</td><td><a data-itemId="0" href="#" class="deleteItem">Sil</a></td></tr> ';
+        detailsTableBody.append(productItem);
+        clearItem();
+    });
+    //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+    function clearItem() {
+        $("#mehsul").val('');
+        $("#qiymet").val('');
+        $("#isdehsaltarix").val('');
+        $("#bitmetarix").val('');
+        $("#miqdar").val('');
+    }
+    // After Add A New Order In The List, If You Want, You Can Remove It.
+    $(document).on('click', 'a.deleteItem', function (e) {
+        e.preventDefault();
+        var $self = $(this);
+        if ($(this).attr('data-itemId') == "0") {
+            $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                $(this).remove();
+            });
+        }
+    });
+    //After Click Save Button Pass All Data View To Controller For Save Database
+    function saveOrder(data) {
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Purchase/SaveOrder",
+            data: data,
+            success: function (result) {
+                alert(result);
+                location.reload();
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+    }
+    //Collect Multiple Order List For Pass To Controller
+    $("#saveOrder").click(function (e) {
+        e.preventDefault();
+
+        var orderArr = [];
+        orderArr.length = 0;
+
+        $.each($("#detailsTable tbody tr"), function () {
+            orderArr.push({
+                ProductId: $(this).find('td:eq(5)').html(),
+                AlisMebleg: $(this).find('td:eq(1)').html(),
+                IstehsalTarixi: $(this).find('td:eq(2)').html(),
+                BitmeTarixi: $(this).find('td:eq(3)').html(),
+                Say_Ceki_: $(this).find('td:eq(4)').html()
+            });
+        });
+
+
+        var data = JSON.stringify({
+            topmeb: $("#topmeb").val(),
+            odenmeb: $("#odenmeb").val(),
+            firma: $("#firma").val(),
+            purchaseItems: orderArr
+        });
+
+        $.when(saveOrder(data)).then(function (response) {
+            console.log(response);
+        }).fail(function (err) {
+            console.log(err);
+        });
+    });
+</script>
+
+
+
+
+
+

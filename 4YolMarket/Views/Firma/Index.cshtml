@@ -1,0 +1,255 @@
+﻿@model _4YolMarket.Models.FirmaDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int a = 1;
+}
+<head>
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+
+</head>
+
+<style>
+    .select2-results__option {
+        font-size: 15px !important;
+    }
+
+    .select2-search__field {
+        font-size: 15px !important;
+    }
+</style>
+<div class="content d-flex flex-column flex-column-fluid" id="tc_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white mb-0 px-0 py-2">
+                    <li class="breadcrumb-item active" aria-current="page">Firma</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="card card-custom gutter-b bg-transparent shadow-none border-0">
+                                <div class="card-header align-items-center  border-bottom-dark px-0">
+                                    <div class="card-title mb-0">
+                                        <h3 class="card-label mb-0 font-weight-bold text-body">
+                                            Elaqede Oldugunuz Firmalar
+                                        </h3>
+                                        <form typeof="Post" action="@Url.Action("Index","Firma")">
+                                            <select class="js-example-basic-single" name="SelectId" style="font-size:18px; border:2px solid red; ">
+                                                @foreach (var item in Model.Firmas)
+                                                {
+                                                    <option style="" value="@item.Id">@item.Ad</option>
+                                                }
+
+
+                                            </select>
+                                            <button type="submit" class="btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="container">
+
+
+
+                                        <div class="icons d-flex" style="float:right; ">
+
+                                            <button class="btn ml-2  p-0 btn" data-toggle="modal" data-target="#Modal1" style=" width:50px; height:50px;"
+                                                    id="kt_notes_panel_toggle" title="Əlave Et" data-placement="right"
+                                                    data-original-title="Check out more demos">
+                                                <span style="width: 45px !important; height: 45px !important;" class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm ">
+
+                                                    <svg style="" width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                    </svg>
+                                                </span>
+
+                                            </button>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+
+                        <div class="col-12 ">
+                            <div class="card card-custom gutter-b bg-white border-0">
+                                <div class="card-body">
+                                    <div>
+                                        <div class="  table-responsive" id="printableTable ">
+                                            <table id="productUnitTable" class="display table tab-content ">
+
+                                                <thead class="text-body">
+                                                    <tr style="font-size:23px;">
+                                                        <th>Sira NO:</th>
+                                                        <th class="text-center">Firma Adi</th>
+                                                        <th class="text-center">Odenilecek Mebleg</th>
+                                                        @*<th class="text-center">Detay</th>*@
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="kt-table-tbody text-dark">
+                                                    @foreach (var x in Model.Firmas)
+                                                    {
+
+
+                                                        <tr style="font-size:20px;" class="kt-table-row kt-table-row-level-0">
+                                                            <td>#@a @{a++;}</td>
+                                                            <td class="text-center">
+                                                                @x.Ad
+                                                            </td>
+                                                            <td class="text-center">@x.Balance ₼</td>
+                                                            @*<td class="text-center">
+                                                                    <a href="@Url.Action("FirmaDetay","Firma",new {Id=x.Id })" class="btn btn-primary" >Detay</a>
+                                                                </td>*@
+
+                                                        </tr>
+                                                    }
+
+
+                                                </tbody>
+                                            </table>
+                                            <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+        <nav class="mt-3" >
+            <ul class="pagination pagination-sm" style=" height:40px;">
+                @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                    @if (ViewBag.Page - 1 != 0)
+                    {
+                        <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                    }
+                </li>*@
+                @if (ViewBag.currentPage > 1)
+						{
+							<li>
+								<a style="height: 40px; width: 30px; font-size: 17px;" class="page-link"   href="~/Firma/Index">1</a>
+							</li>
+                            <li>
+                                @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                                <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("Index","Firma",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris, SelectId =ViewBag.SelectId})">Əvvəlki</a>
+
+                            </li>
+						}
+
+
+                @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+        {
+            <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+        }*@
+                @for (var i = ViewBag.startPage; i <=ViewBag.endPage; i++)
+                {
+                    
+                    <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Firma",new { page = i, p = ViewBag.Axtaris, SelectId =ViewBag.SelectId})">@i</a></li>
+
+                    @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                        <a href="~/Logs/Index?page=@page">@page</a>
+                    </li>*@
+                   
+                }
+
+
+                <li class="page-item">
+                    @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                    {
+                        <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("Index","Firma",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris , SelectId =ViewBag.SelectId})">Sonrakı</a>
+                    }
+                </li>
+            </ul>
+        </nav>
+
+        <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+    </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">Yeni Firma Elave Edin</div>
+            </div>
+            <form method="post" id="myform" action="@Url.Action("CreateFirma","Firma")" enctype="multipart/form-data" role="form">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="Ad">Firma Adi</label>
+                        <input type="text" name="Ad" class="form-control Ad" id="Ad" placeholder="Ad Daxil Edin" title="Mütləq doldurulmalıdır!">
+                    </div>
+                    <!--<div class="form-group">
+                        <label for="exampleInputEmail1">Odenilecek Mebleg</label>
+                        <input type="text" name="Balance" class="form-control"-->
+                    @*id="exampleInputEmail1"*@
+                    <!--placeholder="Ad Daxil Edin">
+                    </div>-->
+
+
+
+
+
+
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Yarat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform").validate({
+        rules: {
+            Ad: {
+                required: true
+            }
+        }
+    });
+</script>

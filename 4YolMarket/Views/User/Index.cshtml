@@ -1,0 +1,58 @@
+﻿@model List<_4YolMarket.Models.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div style="font:bolder; text-align:center;">
+    <h2>Kassir Melumatllari</h2>
+
+</div>
+
+<div class="container">
+    <a href="@Url.Action("CreateUser","User")" class="btn btn-info">Kassir ElaveEt</a><br />
+    <br />
+    <table class="table tab-content">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+                <th>Sekil</th>
+                <th>Veziyyet</th>
+                <th>Sifre</th>
+                <th>Kassiri Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+            <tr>
+                <td>@x.Ad</td>
+                <td>@x.Soyad</td>
+                <td>@x.Email</td>
+
+                <td>
+                    <img  style="width:60px; height:60px; border-radius:100%;" src="~/Images/@x.Sekil" />
+                </td>
+                <td>
+                    @if (@x.Status == true)
+                    {
+                        <p style="background-color:lawngreen; width:60px; font-weight:700; padding-top:4px; height:27px; text-align:center; border-radius:30px;">Akdiv</p>
+                    }
+                    @if (x.Status == false)
+                    {
+                        <p style="background-color:darkorange; width:60px; font-weight:700; padding-top:4px; height:27px; text-align:center; border-radius:30px;">Passiv</p>
+                    }
+                </td>
+                <td>@x.Sifre</td>
+                <td>
+                    <a class="btn btn-danger" style="border-radius:15px;" href="@Url.Action("Delate","User",new {Id=x.Id })">Sil</a>
+                </td>
+            </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
+

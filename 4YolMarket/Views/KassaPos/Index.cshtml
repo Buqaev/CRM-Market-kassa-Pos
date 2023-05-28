@@ -1,0 +1,641 @@
+﻿@model _4YolMarket.Models.PosDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int Id;
+
+}
+
+@*<head>
+        <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+
+    </head>*@
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<style>
+    .artir {
+        background-color: green;
+        height: 40px;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        margin-left: 3px;
+        font-size: 20px;
+        width: 20px;
+    }
+
+    .azalt {
+        background-color: red;
+        height: 40px;
+        margin-right: 3px;
+        font-size: 20px;
+        width: 20px;
+    }
+</style>
+<style>
+    .select2-results__option {
+        font-size: 18px !important;
+    }
+
+    .select2-search__field {
+        font-size: 18px !important;
+    }
+
+    .select2-selection--single {
+        width: 180px !important;
+        height: 20px !important;
+        font-size: 25px !important;
+    }
+</style>
+
+
+<div style="padding-top:0px;" class="contentPOS">
+    <div class="container-fluid">
+        <div class="row">
+
+            
+
+
+           
+            <div style="height:500px; " class="col-xl-11 col-lg-11 col-md-11">
+                <div class="">
+
+                    <div class="card card-custom gutter-b bg-white border-0 table-contentpos">
+                        <div style="float:right;" class="card-body">
+                            <div class="form-group row mb-0">
+                                <div class="col-md-12">
+                                    
+                                        <label style="font-size: 18px;">Barkodu daxil edin</label>
+                                    
+                                    <form method="post" action="@Url.Action("ProducAddCart", "KassaPos", new {OrdId = Model.Order.Id })">
+                                        <fieldset  class="form-group mb-0 d-flex barcodeselection">
+
+
+                                            <input autofocus="autofocus" type="text" name="Barcode" style="width:300px; margin-right:10px;" class="form-control border-dark" id="basicInput1" placeholder="Barkod DaxilEt">
+                                            <button class=" bg-primary" style="width:140px; font-size:20px;">Təsdiqlə</button>
+                                        </fieldset>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:250px;" class="table-datapos">
+                            <div class="table-responsive" id="printableTable">
+                                <table id="orderTable" class="display table table-hover " style="width:100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Məhsul Adı</th>
+                                            <th> Qiymət</th>
+                                            <th @*style="padding-left:30px;"*@>Say/Çəki</th>
+                                            <th>Məbləğ</th>
+                                            <th class=" text-right no-sort"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var x in Model.OrderItemss.OrderByDescending(z=>z.Id))
+                                        {
+                                            <tr style="font-size:15px" class="list-ajax" id="list-ajax">
+
+                                                <td style=" font-size:15px;">@x.Product.Ad</td>
+
+
+                                                <td style="display:none">
+                                                    <input type="hidden" value="@x.ProductId" class="deyer-ajax" />
+                                                </td>
+                                                <td style="display:none">
+                                                    <input type="hidden" value="@x.OrderId" class="Orddeyer-ajax" />
+                                                </td>
+
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" disabled style="width:100px;"  name="SatisMeblegi" value="@x.SatisMeblegi" class="form-control SatisMeblegi-ajax" id="txt2"  />
+                                                    </div>
+                                                </td>
+                                                <td >
+                                                    <div class="form-group">
+                                                        @*<a class="btn btn-danger" href="@Url.Action("Azalt", "KassaPos", new { id = x.Product.Id, OrdId = x.Order.Id })">-</a>*@
+                                                        <input type="text" name="Say" style="width:100px;height:40px;" class="form-control Say Say-ajax" value="@x.Say" size="1" id="number" />
+                                                        @*<a class="btn btn-primary" href="@Url.Action("Artir", "KassaPos", new { id = x.Product.Id, OrdId = x.Order.Id })">+</a>*@
+                                                    </div>
+                                                </td>
+                                                
+                                               <td ><span id="PerCostAjax" class="PerCostAjax">@x.MehsulMeblegi ₼</span> </td>
+                                                
+                                                <td>
+                                                    <div class="card-toolbar text-right">
+                                                        <a href="@Url.Action("Delete", "KassaPos", new { Id = x.ProductId, OrdId = x.Order.Id })" class="confirm-delete" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div>
+
+
+
+                            <table class="table right-table">
+
+                                <tbody class="CustomerAjax" style="background-color: whitesmoke; width:100%; height:100%;">
+                                    <tr class="d-flex align-items-center justify-content-between ">
+                                        <th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+                                            Məhsul Sayı
+                                        </th>
+                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">@ViewBag.mehsulSay</td>
+
+                                    </tr>
+                                    <tr class="d-flex align-items-center justify-content-between">
+                                        <th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+                                            Məhsulun Çeşid Sayı
+                                        </th>
+                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">
+                                            <span id="CesidSay">@ViewBag.cesidSay</span></td>
+
+                                    </tr>
+
+
+
+
+                                    <tr id="ajax-mebleg" class="d-flex align-items-center justify-content-between item-price ">
+                                        <th style="font-size:18px;" class="border-0  mb-0 font-size-bold text-info">
+
+                                            ÜMUMİ MƏBLƏĞ
+                                        </th>
+                                        <td style="font-size:20px; font-weight:600;" class="border-0 justify-content-end d-flex text-info font-size-base ">
+                                        <span id="ToplamMebleg"   class="ToplamMebleg">₼@Session["ToplamMebleg"]</span></td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row mb-0">
+                                <div class="col-md-12 btn-submit d-flex justify-content-end">
+                                    <form action="@Url.Action("SatisLegvi", "KassaPos", new { OrdId = Model.Order.Id })" method="post">
+                                        <button type="submit" class="btn btn-danger mr-2 confirm-delete" title="Delete">
+                                            <i class="fas fa-trash-alt mr-2"></i>
+                                            Ləğv
+                                        </button>
+                                    </form>
+                                    <button type="submit" class="btn btn-secondary white" data-toggle="modal" data-target="#Modal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-folder-fill svg-sm mr-2" viewBox="0 0 16 16">
+                                            <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z" />
+                                        </svg>
+                                        Satış Et
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="Modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#Modal3">Nəğdsatış</button>
+                <button type="submit" data-toggle="modal" data-target="#Modal1" class="btn btn-info float-right">Nisyəsatış</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@*Negd satis*@
+
+<div class="modal" id="Modal3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+            </div>
+            <form method="post" id="myform" action="@Url.Action("NegdSatisiSonlandir", "KassaPos", new { OrdId = Model.Order.Id })" enctype="multipart/form-data" role="form">
+
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+                    <div class="d-flex row">
+
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Ödəniləcək Məbləğ</label>
+                            <input style="height:60px; width:150px;" id="mb1" type="text" value="@Session["ToplamMebleg"]" name="ToplamMebleg" class="form-control">
+                            @*<span id="mb1"   class="ToplamMebleg">₼@Session["ToplamMebleg"]</span>*@
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="mb2">Ödənilən Məbləğ</label>
+                            <input style="height: 60px; width: 150px;" type="text" id="mb2" name="OdenilenMebleg" class="form-control mb2" placeholder="0" title="Mütləq doldurulmalıdır!">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Qaytarn</label>
+                            <input style="height: 60px; width: 150px;" type="text" id="cem" class="form-control" placeholder="0">
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="card-footer">
+                    <button type="submit" id="ngdsat" @*onclick="SatisLegv()"*@ class="btn btn-primary">Satış Et</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@*Var olan musderye sat*@
+
+<div class="modal" @*style="width:1200px;"*@ id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content " @*style=" width: 850px;"*@>
+            <div class="float-right">
+                <button type="submit" style="width:120px; " data-toggle="modal" data-target="#Modal2" class="btn btn-warning float-right">
+
+                    Yeni Musderi Yarat
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">Borculu Müşdəriyə Satış Et</div>
+            </div>
+            @*<form method="post" class="d-flex" action="@Url.Action("Index","KassaPos",new {OrdId=Model.Order.Id })" enctype="multipart/form-data" role="form">
+                    <div class="form-group">
+                        <input height="20px;" type="text" name="axtar" placeholder="Müştərdi adı ilə axtar" />
+                        <button class="btn" style="background-color:#007BFF">Axtar</button>
+                    </div>
+                </form>*@
+            @*<form method="post" action="@Url.Action("SatisSonlandir","KassaPos",new {CustId= })" enctype="multipart/form-data" role="form">*@
+            <form method="post" id="myform2" class="d-flex" action="@Url.Action("SatisSonlandir", "KassaPos", new { OrdId = Model.Order.Id@*,CustId=Model.Customer.Id*@})" enctype="multipart/form-data" role="form">
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+                    <div class="d-flex row">
+
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Ödəniləcək Məbləğ</label>
+                            <input style="height:60px; width:150px;" id="a" type="text" value="@Session["ToplamMebleg"]" name="ToplamMebleg" class="form-control">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Ödənilən Məbləğ</label>
+                            <input style="height: 60px; width: 150px; " type="text" placeholder="ödəniş olunmursa 0(sfır) daxilet" id="b" name="OdenilenMebleg" class="form-control" title="Müşdəri heçbir ödəniş etmirsə 0(sfır) daxilet!">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Qaytarn</label>
+                            <input name="Mebleg" value="Mebleg" style="height: 60px; width: 150px;" type="text" id="c" class="form-control">
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <div class="container" style="background-color:white; padding-top:35px;">
+
+                    @*<div class="form-group ">
+                        <h2 for="exampleInputEmail1">Müşdərini Seç</h2>
+                        <select class="js-example-basic-single" id="CustId" name="CustId" style="font-size:25px;" title="Borc yazılacağ MÜŞDƏRİNİ aşağıdan seç!">
+                            <option>Seçin</option>
+                            @foreach (var item in ViewBag.musderiler)
+                            {
+
+                                <option value="@item.Id">@item.Ad @item.Soyad (@item.Balance)</option>
+                            }
+
+
+                        </select><br />
+                        </div>*@
+                    <div class="form-group ">
+
+
+                        <h2 for="exampleInputEmail1">Müşdərini Seç</h2>
+                        <select class="js-example-basic-single" id="CustId" name="CustId" style="font-size:45px;" title="Borc yazılacağ MÜŞDƏRİNİ aşağıdan seç!">
+                            <option value="">--Seçin</option>
+                            @foreach (var item in ViewBag.musderiler)
+                            {
+
+                                <option value="@item.Id">@item.Ad @item.Soyad (@item.Balance)</option>
+                            }
+
+                        </select>
+
+                    </div>
+                    <br />
+                    <div class="container">
+                        <button class="btn btn-primary btn-lg" style="margin-top:170px;">Satış Tamamla</button>
+                    </div>
+
+                </div>
+
+
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+@*Yeni Musderi yarat Sat*@
+
+
+<div class="modal" id="Modal2">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:700px; height:600px;">
+            <div class="modal-header">
+                <div class="modal-title" style="font-size:30px;">
+
+                    Yeni Müşdəri Yaradın
+                </div>
+            </div>
+            <form method="post" id="myform3" action="@Url.Action("SatisSonlandir","KassaPos",new {OrdId=Model.Order.Id})" enctype="multipart/form-data" role="form">
+                <div class="card-body" style="font-size:17px; font-weight:700;">
+                    <div class="d-flex row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Müşdəri Adı</label>
+                            <input type="text" name="Ad" class="form-control" placeholder="Ağa" title="Mütləq doldurulmalıdır!">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Müşdəri Soyadı</label>
+                            <input type="text" name="Soyad" class="form-control" placeholder="Ağayev" title="Mütləq doldurulmalıdır!">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Müşdəri Haqında Qısa Məlumat</label>
+                            <input type="text" name="Description" class="form-control" placeholder="(Yuxarı, Qarahacıl, Beçaqar)" title="Mütləq doldurulmalıdır!">
+                        </div>
+
+                    </div>
+                    <div class="d-flex row">
+
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1">Ödəniləcək Məbləğ</label><br />
+                            AZN:  <input style="height:60px; width:150px;" id="say1" type="text" value="@Session["ToplamMebleg"]" name="ToplamMebleg" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1">Ödənilən Məbləğ</label><br />
+                            AZN:<input style="height: 60px; width: 150px;" type="text" id="say2" name="OdenilenMebleg" class="form-control" placeholder="Ağayev" title="Mütləq doldurulmalıdır!">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1">Qaytarn</label><br />
+                            AZN:  <input style="height: 60px; width: 150px;" type="text" id="toplam" class="form-control" placeholder="Ağayev">
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Satışı Tamamlayın</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+
+<script>
+    $(document).on('keyup', '.Say-ajax', function () {
+        var say = $(this).val();
+
+        var ProId = $(this).closest('.list-ajax').find('.deyer-ajax').val();
+        var OrdId = $(this).closest('.list-ajax').find('.Orddeyer-ajax').val();
+        var Qiymet = $(this).closest('#list-ajax').find('#PerCostAjax');
+
+        
+
+
+
+
+        $.ajax({
+            type: 'GET',
+        url: '@Url.Action("Test")', // to get the right path to controller from TableRoutes of Asp.Net MVC
+        contentType: 'application/json; charset=utf-8', //define a contentType of your request
+        cache: false, //avoid caching results
+        data: { 'ProId': ProId, 'say': say, 'OrdId': OrdId  }, // here you can pass arguments to your request if you need
+
+
+            success: function (response) {
+
+                Qiymet.html(response.Price + "₼");
+             
+               
+
+                document.getElementById("ToplamMebleg").innerHTML = "₼" + response.Pricesum
+                document.getElementById('mb1').value = response.Pricesum
+                document.getElementById('a').value = response.Pricesum
+                document.getElementById('say1').value = response.Pricesum
+                document.getElementById('CesidSay').innerHTML = response.SebetSay
+
+                if (response.ProductCount < say) {
+                    alert("Bu məhsul anbarda kifayət qədər deyil" + "(Bu məhsuldan anbarda MAKSİMUM:"+" " + response.ProductCount+" " + "ədəd/kg məhsul var" + ")")
+                    return false;
+                }
+
+            }
+
+        
+
+            
+        });
+        
+    });
+
+
+
+
+
+</script>
+
+
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform").validate({
+        rules: {
+            OdenilenMebleg: {
+                required: true
+            }
+        }
+    });
+</script>
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform2").validate({
+        rules: {
+            OdenilenMebleg: {
+                required: true
+            },
+            CustId: {
+                required: true
+            }
+        }
+    });
+</script>
+
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        /*debug: true,*/
+        success: "valid"
+    });
+    $("#myform3").validate({
+        rules: {
+            Ad: {
+                required: true
+            },
+            Soyad: {
+                required: true
+            },
+            Description: {
+                required: true
+            },
+            OdenilenMebleg: {
+                required: true
+            }
+
+        }
+    });
+</script>
+
+<script>
+
+    $("#mb2").keyup(function () {
+
+        var mb1 = $("#mb1").val();
+        var mb2 = $("#mb2").val();
+
+        $("#cem").val(mb2 - mb1)
+    });
+
+
+</script>
+<script>
+
+    $("#say2").keyup(function () {
+
+        var say1 = $("#say1").val();
+        var say2 = $("#say2").val();
+
+        $("#toplam").val(say2 - say1)
+    });
+
+
+</script>
+<script>
+
+    $("#b").keyup(function () {
+
+        var say1 = $("#a").val();
+        var say2 = $("#b").val();
+
+        $("#c").val(say2 - say1)
+
+        var meb = document.getElementById("#a").value;
+    });
+
+
+
+</script>
+<script>
+
+    $("#b").keyup(function () {
+
+
+        var say2 = $("#b").val();
+
+
+
+
+    });
+
+
+</script>
+
+<script>
+
+    $("#ngdsat").click(function () {
+        var say1 = $("#mb1").val();
+        var say2 = $("#mb2").val();
+        let a = parseFloat(say1);
+        let b = parseFloat(say2);
+
+
+
+
+
+        if (a > b) {
+            alert("Müşdərinin sizə ödədiyi məbləği(Ödənilən məbləğ hissəsini) səhv daxiletmisiz");
+
+
+            return false;
+
+
+            /* alert("Müşdərinin sizə ödədiyi məbləği(Ödənilən məbləğ hissəsini) səhv daxiletmisiz");*/
+            /*swal("Good job!", "You clicked the button!", "error");*/
+
+
+        }
+
+    });
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById('basicInput1').focus();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

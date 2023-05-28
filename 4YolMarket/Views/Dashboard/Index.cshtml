@@ -1,0 +1,400 @@
+﻿@model _4YolMarket.Models.DashboardDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int a = 1;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-info">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Kassa</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.Kassa">@ViewBag.Kassa</span>
+                            </span>
+
+
+                        </div>
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Kassadakı Ümumi Məbləğ</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-primary">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Bank</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.PashaBankBalance">@ViewBag.PashaBankBalance</span>
+                            </span>
+
+                        </div>
+                        <div @*style="font-size:14px;"*@ class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold; ">Paşa Bankdakı Məbləğ</h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-success">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Bugünki Satiş Məbləği</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.SatisMebleg">@ViewBag.SatisMebleg</span>
+                            </span>
+
+                        </div>
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Bukünki Satışın Ümumi Məbləği</h5>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle theme-circle-secondary">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Satış Sayı</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                <span class="counter" data-target="@ViewBag.SatisSay">@ViewBag.SatisSay</span>
+                            </span>
+
+                        </div>
+
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Bugünki Satışlar</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-info">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Müşdəri Borcları</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.MusderiBorcu"></span>
+                            </span>
+
+
+                        </div>
+                        
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Alınacağ Borclar</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-success">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Bu Ayın qazancı</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.Ayqazanc">@ViewBag.Ayqazanc</span>
+                            </span>
+
+                        </div>
+                        
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">BuAy qazndığımız məbləğ</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle theme-circle-secondary">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Günün Nəğd Qazancı</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.Qazanc">@ViewBag.Qazanc</span>
+                            </span>
+
+                        </div>
+                        
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Bugün NƏĞD satışdan qazandığımız məbləğ</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-primary">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Günün Ümumi Qazancı</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.UmumiQazanc ">@ViewBag.UmumiQazanc </span>
+                            </span>
+
+                        </div>
+
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Bugün (Nəğd & Nisyə) satışdan qazandığımız məbləğ</h5>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">    
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle theme-circle-secondary">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Günün Nisiyə Qazancı</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.NisyeQazanc">@ViewBag.NisyeQazanc</span>
+                            </span>
+
+                        </div>
+                        
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Bugün NİSİYƏ satışdan qazandığımız məbləğ</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-primary">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Məhsul</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                <span class="counter" data-target="@ViewBag.mehsay">@ViewBag.mehsay</span> Çeşid
+                            </span>
+
+                        </div>
+                        
+                        <div class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold">Marketdəki Məhsul Sayı</h5>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-3">
+            <div class="card card-custom gutter-b bg-white border-0 theme-circle theme-circle-primary">
+
+                <div class="card-body">
+                    <h3 class="text-body font-weight-bold">Ayın Satışı</h3>
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-dark font-weight-bold font-size-h1 mr-3">
+                                ₼<span class="counter" data-target="@ViewBag.AyinSatisi">@ViewBag.AyinSatisi</span>
+                            </span>
+
+                        </div>
+                        <div @*style="font-size:14px;"*@ class="text-black-50 mt-3">
+                            <h5 style="color: #0E6655; font-weight: bold; ">Bu AY ərzində olan satışməbləği</h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-lg-6 col-xl-8">
+            <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card-header align-items-center  border-0">
+                    <div class="card-title mb-0">
+                        <h3 class="card-label mb-0 font-weight-bold text-body">
+                            Tükənməy Üzrə Olan Məhsullar
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div>
+                        <div class="kt-table-content table-responsive">
+                            <table @*id="myTable"*@ class="table ">
+
+                                <thead class="kt-table-thead text-body" style="font-size:19px;">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Məhsul Ad</th>
+                                        <th>Məhsul Şəkli</th>
+
+                                        <th>Anbardaki (say/çəki)</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="kt-table-tbody text-dark" style="font-size:17px;">
+                                    @foreach (var x in Model.Stocks)
+                                    {
+                                        <tr class="kt-table-row kt-table-row-level-0">
+                                            <td class="kt-table-cell">@a @{a++;} </td>
+                                            <td class="kt-table-cell">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="ml-2">@x.Product.Ad</span>
+                                                </div>
+                                            </td>
+
+                                            <td class="kt-table-cell">
+                                                <img style="border-radius:100%; width:70px; height:70px;" src="~/Images/@x.Product.Sekil" />
+                                            </td>
+
+                                            <td class="kt-table-cell">
+                                                @if (x.Say_ceki_ == 0)
+                                                {
+                                                    <span style="color:#dc2f2f; font-style:italic; font-weight:700;">
+                                                        @x.Say_ceki_
+
+                                                    </span>
+                                                }
+                                                @if (x.Say_ceki_ < (decimal?)2.5 && x.Say_ceki_ != 0)
+                                                {
+                                                    <span style="color:#418c9f; font-style:italic; font-weight:700;">
+                                                        @x.Say_ceki_
+                                                        @if (x.Say_ceki_ % 2 == 0)
+                                                        {
+                                                            <span>eded</span>
+                                                        }
+                                                        @if (x.Say_ceki_ % 2 != 0)
+                                                        {
+
+                                                            <span>kg</span>
+                                                        }
+                                                    </span>
+                                                }
+
+                                            </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                            <div class="products-view__pagination float-right" @*style="width:37px;"*@>
+
+                                <nav class="mt-3">
+                                    <ul class="pagination pagination-sm" style=" height:40px; ">
+                                        @*<li class="page-item disabled" style=" height: 40px; font-size: 27px;">
+                                                @if (ViewBag.Page - 1 != 0)
+                                                {
+                                                    <a style="height: 40px;" class="page-link" href="@Url.Action("Index","Logs",new { page = ViewBag.Page-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+                                                }
+                                            </li>*@
+                                        @if (ViewBag.currentPage > 1)
+                                        {
+                                            <li>
+                                                <a style="height: 40px; width: 30px; font-size: 17px;" class="page-link" href="~/Dashboard/Index">1</a>
+                                            </li>
+                                            <li>
+                                                @*<a style="height: 40px;" class="page-link font-size:initial;"  href="~/Logs/Index?page=@(ViewBag.currentPage - 1)">Əvvəlki</a>*@
+                                                <a style="height: 40px !important; font-size: initial; " class="page-link" href="@Url.Action("Index","Dashboard",new { page = ViewBag.currentPage-1  , p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Əvvəlki</a>
+
+                                            </li>
+                                        }
+
+
+                                        @*@for (int i = 1; i <= ViewBag.TotalPage; i++)
+                                            {
+                                                <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Logs",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+                                            }*@
+                                        @for (var i = ViewBag.startPage; i <= ViewBag.endPage; i++)
+                                        {
+
+                                            <li style="height: 40px !important; width: 30px; font-size: 27px;" class="page-item  @(i==ViewBag.Page?"active":"")"><a style="height: 40px !important; font-size: 17px;" class="page-link" href="@Url.Action("Index","Dashboard",new { page = i, p = ViewBag.Axtaris, CatId = ViewBag.CatId , TagId = ViewBag.TagId })">@i</a></li>
+
+                                            @*<li style="height: 40px !important; width: 30px; font-size: 27px;" class="@(page == ViewBag.currentPage  ? "active" : "")">
+                                                    <a href="~/Logs/Index?page=@page">@page</a>
+                                                </li>*@
+
+                                        }
+
+
+                                        <li class="page-item">
+                                            @if (ViewBag.Page + 1 <= ViewBag.TotalPage)
+                                            {
+                                                <a style="height: 40px!important; font-size:initial;" class="page-link" href="@Url.Action("Index","Dashboard",new { page = ViewBag.Page+1 , p = ViewBag.Axtaris , CatId = ViewBag.CatId , TagId = ViewBag.TagId})">Sonrakı</a>
+                                            }
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+      
+            <table>
+                <thead class="table">
+                 
+                </thead>
+            </table>
+        </div>
+   
+
+</div>
+
+

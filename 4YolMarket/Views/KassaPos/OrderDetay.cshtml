@@ -1,0 +1,78 @@
+﻿@model _4YolMarket.Models.OrdetayDto
+@{
+    ViewBag.Title = "OrderDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int a = 1;
+}
+
+<div @*class="modal fade" id="Modal"*@>
+    <div class="modal-dialog modal-lg" @*style=" width: 900px !important;"*@>
+        <div class="modal-content">
+            <div class="row" style="margin-top:15px; margin-bottom:20px; ">
+                <div class="container">
+                    <div class="col-md-12 d-flex" style="border-bottom: 2px solid #aeccc6;">
+                        <div class="col-md-6">
+                            <h5>Tarix: @Model.order.Tarix.ToString("dd-MMM-yyyy")</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="float-right">Məbləğ: @Model.order.ToplamMebleg  ₼</h3>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <div @*class="container"*@ style="background-color:white;">
+                <table class="table table-bordered">
+                    <thead style="background-color: #aeccc6">
+                        <tr style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:20px;">
+                            <th>№</th>
+                            <th>Məhsulun Adı</th>
+                            <th>Say/Çəki(ədəd/kg)</th>
+                            <th>Qiymət</th>
+                            <th>Ümumi Qiymət</th>
+
+                        </tr>
+
+
+                    </thead>
+                    <tbody style="font-size:15px; font-family:'Times New Roman', Times, serif;">
+
+                        @foreach (var x in Model.orderItems)
+                        {
+                            <tr>
+                                <td>@a @{a++;}</td>
+                                <td>@x.Product.Ad</td>
+                                <td>@x.Say</td>
+                                <td>@x.SatisMeblegi</td>
+                                <td>@x.MehsulMeblegi</td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+                
+                   
+                        
+
+                           
+
+
+                        
+                      
+                
+            </div>
+
+            <div class="container " style="margin-top:15px;">
+                <h3 style="border-bottom: 2px solid #aeccc6; width:250px;">Məbləğ: @Model.order.ToplamMebleg  ₼</h3>
+
+                <br />
+
+
+
+                <h3 style="border-bottom: 2px solid #aeccc6; width: 250px;">Məhsul Say: @Model.orderItems.Count() ədəd</h3>
+            </div>
+        </div>
+    </div>
+</div>
+

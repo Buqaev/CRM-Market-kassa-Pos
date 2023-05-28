@@ -1,0 +1,61 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/login16.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Oct 2022 13:04:27 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iofrm</title>
+    <link rel="stylesheet" type="text/css" href="~/html/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/html/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="~/html/css/iofrm-style.css">
+    <link rel="stylesheet" type="text/css" href="~/html/css/iofrm-theme16.css">
+</head>
+<body>
+    <div class="form-body without-side">
+        <div class="website-logo">
+            @*<a href="index.html">
+                <div class="logo">
+                    <img class="logo-size"  src="~/html/images/logo-light.svg" alt="">
+                </div>
+            </a>*@
+        </div>
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="~/html/images/graphic3.svg" alt="">
+                </div>
+            </div>
+
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>İsdifadəçi Girişi</h3>
+                        <p>Email ve Şifrə daxil edərək market siteminə daxilolun.</p>
+                        <form method="post" action="@Url.Action("Giris","Login")">
+                            <input class="form-control"  type="text" name="Mail" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="Sifre" placeholder="Şifrə" required>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Daxil Ol</button> <a href="forget16.html">Forget password?</a>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/html/js/jquery.min.js"></script>
+    <script src="~/html/js/popper.min.js"></script>
+    <script src="~/html/js/bootstrap.min.js"></script>
+    <script src="~/html/js/main.js"></script>
+</body>
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/login16.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Oct 2022 13:04:29 GMT -->
+</html>

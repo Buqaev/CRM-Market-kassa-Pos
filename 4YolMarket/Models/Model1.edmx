@@ -1,0 +1,1421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ibuqayev_4yolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashBoxCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashBoxLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="CashBoxCategoryId" Type="int" />
+          <Property Name="Mebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FirmaId" Type="int" />
+          <Property Name="Tarix" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Cashs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KassaEmeliyat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarix" Type="datetime" Nullable="false" />
+          <Property Name="Mebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Gelir(Xerc)" Type="bit" Nullable="false" />
+          <Property Name="PurchaseId" Type="int" />
+          <Property Name="OrderId" Type="int" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="HereketId" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Tarix" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SatisMeblegi" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Say" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="MehsulMeblegi" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Qazanc" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarix" Type="datetime" Nullable="false" />
+          <Property Name="ToplamMebleg" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="OdenilenMebleg" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsComtable" Type="bit" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sekil" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlisMebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IstehsalTarixi" Type="datetime" Nullable="false" />
+          <Property Name="BitmeTarixi" Type="datetime" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="PurchaseId" Type="int" />
+          <Property Name="Say(Ceki)" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Purchases">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarix" Type="datetime" Nullable="false" />
+          <Property Name="ToplamMebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OdenilenMebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="FirmaId" Type="int" Nullable="false" />
+          <Property Name="Veziyyet" Type="bit" />
+        </EntityType>
+        <EntityType Name="Returns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Tarix" Type="datetime" Nullable="false" />
+          <Property Name="Say" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StockId" Type="int" Nullable="false" />
+          <Property Name="FirmaId" Type="int" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Stocks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Say(ceki)" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalePrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="PurchasesId" Type="int" />
+          <Property Name="AlisMebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="90" Nullable="false" />
+          <Property Name="Sekil" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashBoxs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MoneyTransfers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromCashBoxId" Type="int" />
+          <Property Name="ToCashBoxId" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Mebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CashBoxLogs_CashBoxCategories">
+          <End Role="CashBoxCategories" Type="Self.CashBoxCategories" Multiplicity="0..1" />
+          <End Role="CashBoxLogs" Type="Self.CashBoxLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashBoxCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CashBoxLogs">
+              <PropertyRef Name="CashBoxCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CashBoxLogs_Firma">
+          <End Role="Firma" Type="Self.Firma" Multiplicity="0..1" />
+          <End Role="CashBoxLogs" Type="Self.CashBoxLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CashBoxLogs">
+              <PropertyRef Name="FirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KassaEmeliyat_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="KassaEmeliyat" Type="Self.KassaEmeliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KassaEmeliyat">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KassaEmeliyat_Purchases">
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="0..1" />
+          <End Role="KassaEmeliyat" Type="Self.KassaEmeliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchases">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KassaEmeliyat">
+              <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logs_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoneyTransfers_CashBoxs">
+          <End Role="CashBoxs" Type="Self.CashBoxs" Multiplicity="0..1" />
+          <End Role="MoneyTransfers" Type="Self.MoneyTransfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashBoxs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyTransfers">
+              <PropertyRef Name="ToCashBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoneyTransfers_MoneyTransfers">
+          <End Role="CashBoxs" Type="Self.CashBoxs" Multiplicity="0..1" />
+          <End Role="MoneyTransfers" Type="Self.MoneyTransfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashBoxs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyTransfers">
+              <PropertyRef Name="FromCashBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseItem_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="PurchaseItem" Type="Self.PurchaseItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseItem_Purchases">
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="0..1" />
+          <End Role="PurchaseItem" Type="Self.PurchaseItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchases">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseItem">
+              <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_Firma">
+          <End Role="Firma" Type="Self.Firma" Multiplicity="1" />
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="FirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Returns_Firma">
+          <End Role="Firma" Type="Self.Firma" Multiplicity="0..1" />
+          <End Role="Returns" Type="Self.Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Returns">
+              <PropertyRef Name="FirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Returns_Products">
+          <End Role="Stocks" Type="Self.Stocks" Multiplicity="1" />
+          <End Role="Returns" Type="Self.Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stocks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Returns">
+              <PropertyRef Name="StockId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Returns_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Returns" Type="Self.Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Returns">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stocks_Purchases">
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="0..1" />
+          <End Role="Stocks" Type="Self.Stocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchases">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stocks">
+              <PropertyRef Name="PurchasesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stocks_Stocks">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Stocks" Type="Self.Stocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stocks">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ibuqayev_4yolModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashBoxCategories" EntityType="Self.CashBoxCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashBoxLogs" EntityType="Self.CashBoxLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cashs" EntityType="Self.Cashs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firma" EntityType="Self.Firma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KassaEmeliyat" EntityType="Self.KassaEmeliyat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseItem" EntityType="Self.PurchaseItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Returns" EntityType="Self.Returns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashBoxs" EntityType="Self.CashBoxs" Schema="ibuqayev_4yol" store:Type="Tables" />
+          <EntitySet Name="MoneyTransfers" EntityType="Self.MoneyTransfers" Schema="ibuqayev_4yol" store:Type="Tables" />
+          <AssociationSet Name="FK_CashBoxLogs_CashBoxCategories" Association="Self.FK_CashBoxLogs_CashBoxCategories">
+            <End Role="CashBoxCategories" EntitySet="CashBoxCategories" />
+            <End Role="CashBoxLogs" EntitySet="CashBoxLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CashBoxLogs_Firma" Association="Self.FK_CashBoxLogs_Firma">
+            <End Role="Firma" EntitySet="Firma" />
+            <End Role="CashBoxLogs" EntitySet="CashBoxLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KassaEmeliyat_Orders" Association="Self.FK_KassaEmeliyat_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="KassaEmeliyat" EntitySet="KassaEmeliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KassaEmeliyat_Purchases" Association="Self.FK_KassaEmeliyat_Purchases">
+            <End Role="Purchases" EntitySet="Purchases" />
+            <End Role="KassaEmeliyat" EntitySet="KassaEmeliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logs_User" Association="Self.FK_Logs_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoneyTransfers_CashBoxs" Association="Self.FK_MoneyTransfers_CashBoxs">
+            <End Role="CashBoxs" EntitySet="CashBoxs" />
+            <End Role="MoneyTransfers" EntitySet="MoneyTransfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoneyTransfers_MoneyTransfers" Association="Self.FK_MoneyTransfers_MoneyTransfers">
+            <End Role="CashBoxs" EntitySet="CashBoxs" />
+            <End Role="MoneyTransfers" EntitySet="MoneyTransfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Orders" Association="Self.FK_OrderItem_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Products" Association="Self.FK_OrderItem_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Brand" Association="Self.FK_Products_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseItem_Products" Association="Self.FK_PurchaseItem_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PurchaseItem" EntitySet="PurchaseItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseItem_Purchases" Association="Self.FK_PurchaseItem_Purchases">
+            <End Role="Purchases" EntitySet="Purchases" />
+            <End Role="PurchaseItem" EntitySet="PurchaseItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_Firma" Association="Self.FK_Purchases_Firma">
+            <End Role="Firma" EntitySet="Firma" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Returns_Firma" Association="Self.FK_Returns_Firma">
+            <End Role="Firma" EntitySet="Firma" />
+            <End Role="Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Returns_Products" Association="Self.FK_Returns_Products">
+            <End Role="Stocks" EntitySet="Stocks" />
+            <End Role="Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Returns_User" Association="Self.FK_Returns_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stocks_Purchases" Association="Self.FK_Stocks_Purchases">
+            <End Role="Purchases" EntitySet="Purchases" />
+            <End Role="Stocks" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stocks_Stocks" Association="Self.FK_Stocks_Stocks">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Stocks" EntitySet="Stocks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ibuqayev_4yolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="ibuqayev_4yolModel.FK_Products_Brand" FromRole="Brand" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Cash">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="ibuqayev_4yolModel.FK_Products_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Firma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Returns" Relationship="Self.FK_Returns_Firma" FromRole="Firma" ToRole="Returns" />
+          <NavigationProperty Name="Purchases" Relationship="ibuqayev_4yolModel.FK_Purchases_Firma" FromRole="Firma" ToRole="Purchase" />
+          <NavigationProperty Name="CashBoxLogs" Relationship="ibuqayev_4yolModel.FK_CashBoxLogs_Firma" FromRole="Firma" ToRole="CashBoxLog" />
+        </EntityType>
+        <EntityType Name="KassaEmeliyat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarix" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Mebleg" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Gelir_Xerc_" Type="Boolean" Nullable="false" />
+          <Property Name="PurchaseId" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_KassaEmeliyat_Orders" FromRole="KassaEmeliyat" ToRole="Orders" />
+          <NavigationProperty Name="Purchase" Relationship="ibuqayev_4yolModel.FK_KassaEmeliyat_Purchases" FromRole="KassaEmeliyat" ToRole="Purchase" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="HereketId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tarix" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Logs_User" FromRole="Logs" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarix" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ToplamMebleg" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="OdenilenMebleg" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="KassaEmeliyats" Relationship="Self.FK_KassaEmeliyat_Orders" FromRole="Orders" ToRole="KassaEmeliyat" />
+          <NavigationProperty Name="OrderItems" Relationship="ibuqayev_4yolModel.FK_OrderItem_Orders" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="PurchaseItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlisMebleg" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IstehsalTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BitmeTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseId" Type="Int32" />
+          <Property Name="Say_Ceki_" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Purchase" Relationship="ibuqayev_4yolModel.FK_PurchaseItem_Purchases" FromRole="PurchaseItem" ToRole="Purchase" />
+          <NavigationProperty Name="Product" Relationship="ibuqayev_4yolModel.FK_PurchaseItem_Products" FromRole="PurchaseItem" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Return">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tarix" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Say" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StockId" Type="Int32" Nullable="false" />
+          <Property Name="FirmaId" Type="Int32" />
+          <Property Name="Customer" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Firma" Relationship="Self.FK_Returns_Firma" FromRole="Returns" ToRole="Firma" />
+          <NavigationProperty Name="Stock" Relationship="Self.FK_Returns_Products" FromRole="Returns" ToRole="Stocks" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Returns_User" FromRole="Returns" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Say_ceki_" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalePrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Returns" Relationship="Self.FK_Returns_Products" FromRole="Stocks" ToRole="Returns" />
+          <Property Name="PurchasesId" Type="Int32" />
+          <Property Name="AlisMebleg" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Purchase" Relationship="ibuqayev_4yolModel.FK_Stocks_Purchases" FromRole="Stock" ToRole="Purchase" />
+          <NavigationProperty Name="Product" Relationship="ibuqayev_4yolModel.FK_Stocks_Stocks" FromRole="Stock" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sekil" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_User" FromRole="User" ToRole="Logs" />
+          <NavigationProperty Name="Returns" Relationship="Self.FK_Returns_User" FromRole="User" ToRole="Returns" />
+        </EntityType>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Returns_Firma">
+          <End Role="Firma" Type="Self.Firma" Multiplicity="0..1" />
+          <End Role="Returns" Type="Self.Return" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Returns">
+              <PropertyRef Name="FirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KassaEmeliyat_Orders">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="KassaEmeliyat" Type="Self.KassaEmeliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KassaEmeliyat">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logs_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Logs" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Returns_Products">
+          <End Role="Stocks" Type="Self.Stock" Multiplicity="1" />
+          <End Role="Returns" Type="Self.Return" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stocks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Returns">
+              <PropertyRef Name="StockId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Returns_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Returns" Type="Self.Return" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Returns">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="kassaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Cashs" EntityType="Self.Cash" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Firmas" EntityType="Self.Firma" />
+          <EntitySet Name="KassaEmeliyats" EntityType="Self.KassaEmeliyat" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="PurchaseItems" EntityType="Self.PurchaseItem" />
+          <EntitySet Name="Returns" EntityType="Self.Return" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Returns_Firma" Association="Self.FK_Returns_Firma">
+            <End Role="Firma" EntitySet="Firmas" />
+            <End Role="Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KassaEmeliyat_Orders" Association="Self.FK_KassaEmeliyat_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="KassaEmeliyat" EntitySet="KassaEmeliyats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logs_User" Association="Self.FK_Logs_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Returns_Products" Association="Self.FK_Returns_Products">
+            <End Role="Stocks" EntitySet="Stocks" />
+            <End Role="Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Returns_User" Association="Self.FK_Returns_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <EntitySet Name="Purchases" EntityType="ibuqayev_4yolModel.Purchase" />
+          <AssociationSet Name="FK_Purchases_Firma" Association="ibuqayev_4yolModel.FK_Purchases_Firma">
+            <End Role="Firma" EntitySet="Firmas" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KassaEmeliyat_Purchases" Association="ibuqayev_4yolModel.FK_KassaEmeliyat_Purchases">
+            <End Role="Purchase" EntitySet="Purchases" />
+            <End Role="KassaEmeliyat" EntitySet="KassaEmeliyats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseItem_Purchases" Association="ibuqayev_4yolModel.FK_PurchaseItem_Purchases">
+            <End Role="Purchase" EntitySet="Purchases" />
+            <End Role="PurchaseItem" EntitySet="PurchaseItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stocks_Purchases" Association="ibuqayev_4yolModel.FK_Stocks_Purchases">
+            <End Role="Purchase" EntitySet="Purchases" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <EntitySet Name="OrderItems" EntityType="ibuqayev_4yolModel.OrderItem" />
+          <AssociationSet Name="FK_OrderItem_Orders" Association="ibuqayev_4yolModel.FK_OrderItem_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="ibuqayev_4yolModel.Product" />
+          <AssociationSet Name="FK_Products_Brand" Association="ibuqayev_4yolModel.FK_Products_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="ibuqayev_4yolModel.FK_Products_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Products" Association="ibuqayev_4yolModel.FK_OrderItem_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseItem_Products" Association="ibuqayev_4yolModel.FK_PurchaseItem_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PurchaseItem" EntitySet="PurchaseItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stocks_Stocks" Association="ibuqayev_4yolModel.FK_Stocks_Stocks">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <EntitySet Name="CashBoxs" EntityType="ibuqayev_4yolModel.CashBox" />
+          <EntitySet Name="MoneyTransfers" EntityType="ibuqayev_4yolModel.MoneyTransfer" />
+          <AssociationSet Name="FK_MoneyTransfers_CashBoxs" Association="ibuqayev_4yolModel.FK_MoneyTransfers_CashBoxs">
+            <End Role="CashBox" EntitySet="CashBoxs" />
+            <End Role="MoneyTransfer" EntitySet="MoneyTransfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoneyTransfers_MoneyTransfers" Association="ibuqayev_4yolModel.FK_MoneyTransfers_MoneyTransfers">
+            <End Role="CashBox" EntitySet="CashBoxs" />
+            <End Role="MoneyTransfer" EntitySet="MoneyTransfers" />
+          </AssociationSet>
+          <EntitySet Name="CashBoxCategories" EntityType="ibuqayev_4yolModel.CashBoxCategory" />
+          <EntitySet Name="CashBoxLogs" EntityType="ibuqayev_4yolModel.CashBoxLog" />
+          <AssociationSet Name="FK_CashBoxLogs_CashBoxCategories" Association="ibuqayev_4yolModel.FK_CashBoxLogs_CashBoxCategories">
+            <End Role="CashBoxCategory" EntitySet="CashBoxCategories" />
+            <End Role="CashBoxLog" EntitySet="CashBoxLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CashBoxLogs_Firma" Association="ibuqayev_4yolModel.FK_CashBoxLogs_Firma">
+            <End Role="Firma" EntitySet="Firmas" />
+            <End Role="CashBoxLog" EntitySet="CashBoxLogs" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarix" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ToplamMebleg" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OdenilenMebleg" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="FirmaId" Type="Int32" Nullable="false" />
+          <Property Name="Veziyyet" Type="Boolean" />
+          <NavigationProperty Name="Firma" Relationship="ibuqayev_4yolModel.FK_Purchases_Firma" FromRole="Purchase" ToRole="Firma" />
+          <NavigationProperty Name="KassaEmeliyats" Relationship="ibuqayev_4yolModel.FK_KassaEmeliyat_Purchases" FromRole="Purchase" ToRole="KassaEmeliyat" />
+          <NavigationProperty Name="PurchaseItems" Relationship="ibuqayev_4yolModel.FK_PurchaseItem_Purchases" FromRole="Purchase" ToRole="PurchaseItem" />
+          <NavigationProperty Name="Stocks" Relationship="ibuqayev_4yolModel.FK_Stocks_Purchases" FromRole="Purchase" ToRole="Stock" />
+        </EntityType>
+        <Association Name="FK_Purchases_Firma">
+          <End Type="ibuqayev_4yolModel.Firma" Role="Firma" Multiplicity="1" />
+          <End Type="ibuqayev_4yolModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="FirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KassaEmeliyat_Purchases">
+          <End Type="ibuqayev_4yolModel.Purchase" Role="Purchase" Multiplicity="0..1" />
+          <End Type="ibuqayev_4yolModel.KassaEmeliyat" Role="KassaEmeliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KassaEmeliyat">
+              <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseItem_Purchases">
+          <End Type="ibuqayev_4yolModel.Purchase" Role="Purchase" Multiplicity="0..1" />
+          <End Type="ibuqayev_4yolModel.PurchaseItem" Role="PurchaseItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseItem">
+              <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stocks_Purchases">
+          <End Type="ibuqayev_4yolModel.Purchase" Role="Purchase" Multiplicity="0..1" />
+          <End Type="ibuqayev_4yolModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="PurchasesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SatisMeblegi" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Say" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="MehsulMeblegi" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Qazanc" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Order" Relationship="ibuqayev_4yolModel.FK_OrderItem_Orders" FromRole="OrderItem" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="ibuqayev_4yolModel.FK_OrderItem_Products" FromRole="OrderItem" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_OrderItem_Orders">
+          <End Type="ibuqayev_4yolModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="ibuqayev_4yolModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsComtable" Type="Boolean" Nullable="false" />
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sekil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="ibuqayev_4yolModel.FK_Products_Brand" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="Category" Relationship="ibuqayev_4yolModel.FK_Products_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="OrderItems" Relationship="ibuqayev_4yolModel.FK_OrderItem_Products" FromRole="Product" ToRole="OrderItem" />
+          <NavigationProperty Name="PurchaseItems" Relationship="ibuqayev_4yolModel.FK_PurchaseItem_Products" FromRole="Product" ToRole="PurchaseItem" />
+          <NavigationProperty Name="Stocks" Relationship="ibuqayev_4yolModel.FK_Stocks_Stocks" FromRole="Product" ToRole="Stock" />
+        </EntityType>
+        <Association Name="FK_Products_Brand">
+          <End Type="ibuqayev_4yolModel.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="ibuqayev_4yolModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Type="ibuqayev_4yolModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="ibuqayev_4yolModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Products">
+          <End Type="ibuqayev_4yolModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ibuqayev_4yolModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseItem_Products">
+          <End Type="ibuqayev_4yolModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ibuqayev_4yolModel.PurchaseItem" Role="PurchaseItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stocks_Stocks">
+          <End Type="ibuqayev_4yolModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ibuqayev_4yolModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CashBox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="MoneyTransfers" Relationship="ibuqayev_4yolModel.FK_MoneyTransfers_CashBoxs" FromRole="CashBox" ToRole="MoneyTransfer" />
+          <NavigationProperty Name="MoneyTransfers1" Relationship="ibuqayev_4yolModel.FK_MoneyTransfers_MoneyTransfers" FromRole="CashBox" ToRole="MoneyTransfer" />
+        </EntityType>
+        <EntityType Name="MoneyTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromCashBoxId" Type="Int32" />
+          <Property Name="ToCashBoxId" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Mebleg" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="CashBox" Relationship="ibuqayev_4yolModel.FK_MoneyTransfers_CashBoxs" FromRole="MoneyTransfer" ToRole="CashBox" />
+          <NavigationProperty Name="CashBox1" Relationship="ibuqayev_4yolModel.FK_MoneyTransfers_MoneyTransfers" FromRole="MoneyTransfer" ToRole="CashBox" />
+        </EntityType>
+        <Association Name="FK_MoneyTransfers_CashBoxs">
+          <End Type="ibuqayev_4yolModel.CashBox" Role="CashBox" Multiplicity="0..1" />
+          <End Type="ibuqayev_4yolModel.MoneyTransfer" Role="MoneyTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashBox">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyTransfer">
+              <PropertyRef Name="ToCashBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoneyTransfers_MoneyTransfers">
+          <End Type="ibuqayev_4yolModel.CashBox" Role="CashBox" Multiplicity="0..1" />
+          <End Type="ibuqayev_4yolModel.MoneyTransfer" Role="MoneyTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashBox">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyTransfer">
+              <PropertyRef Name="FromCashBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CashBoxCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CashBoxLogs" Relationship="ibuqayev_4yolModel.FK_CashBoxLogs_CashBoxCategories" FromRole="CashBoxCategory" ToRole="CashBoxLog" />
+        </EntityType>
+        <EntityType Name="CashBoxLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="CashBoxCategoryId" Type="Int32" />
+          <Property Name="Mebleg" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="FirmaId" Type="Int32" />
+          <Property Name="Tarix" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CashBoxCategory" Relationship="ibuqayev_4yolModel.FK_CashBoxLogs_CashBoxCategories" FromRole="CashBoxLog" ToRole="CashBoxCategory" />
+          <NavigationProperty Name="Firma" Relationship="ibuqayev_4yolModel.FK_CashBoxLogs_Firma" FromRole="CashBoxLog" ToRole="Firma" />
+        </EntityType>
+        <Association Name="FK_CashBoxLogs_CashBoxCategories">
+          <End Type="ibuqayev_4yolModel.CashBoxCategory" Role="CashBoxCategory" Multiplicity="0..1" />
+          <End Type="ibuqayev_4yolModel.CashBoxLog" Role="CashBoxLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashBoxCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CashBoxLog">
+              <PropertyRef Name="CashBoxCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CashBoxLogs_Firma">
+          <End Type="ibuqayev_4yolModel.Firma" Role="Firma" Multiplicity="0..1" />
+          <End Type="ibuqayev_4yolModel.CashBoxLog" Role="CashBoxLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CashBoxLog">
+              <PropertyRef Name="FirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ibuqayev_4yolModelStoreContainer" CdmEntityContainer="kassaEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cashs">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Cash">
+              <MappingFragment StoreEntitySet="Cashs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firmas">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Firma">
+              <MappingFragment StoreEntitySet="Firma">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KassaEmeliyats">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.KassaEmeliyat">
+              <MappingFragment StoreEntitySet="KassaEmeliyat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tarix" ColumnName="Tarix" />
+                <ScalarProperty Name="Mebleg" ColumnName="Mebleg" />
+                <ScalarProperty Name="Gelir_Xerc_" ColumnName="Gelir(Xerc)" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Log">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="HereketId" ColumnName="HereketId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Tarix" ColumnName="Tarix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tarix" ColumnName="Tarix" />
+                <ScalarProperty Name="ToplamMebleg" ColumnName="ToplamMebleg" />
+                <ScalarProperty Name="OdenilenMebleg" ColumnName="OdenilenMebleg" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseItems">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.PurchaseItem">
+              <MappingFragment StoreEntitySet="PurchaseItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AlisMebleg" ColumnName="AlisMebleg" />
+                <ScalarProperty Name="IstehsalTarixi" ColumnName="IstehsalTarixi" />
+                <ScalarProperty Name="BitmeTarixi" ColumnName="BitmeTarixi" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="Say_Ceki_" ColumnName="Say(Ceki)" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Returns">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Return">
+              <MappingFragment StoreEntitySet="Returns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Tarix" ColumnName="Tarix" />
+                <ScalarProperty Name="Say" ColumnName="Say" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="FirmaId" ColumnName="FirmaId" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Stock">
+              <MappingFragment StoreEntitySet="Stocks">
+                <ScalarProperty Name="AlisMebleg" ColumnName="AlisMebleg" />
+                <ScalarProperty Name="PurchasesId" ColumnName="PurchasesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Say_ceki_" ColumnName="Say(ceki)" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sekil" ColumnName="Sekil" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchases">
+                <ScalarProperty Name="Veziyyet" ColumnName="Veziyyet" />
+                <ScalarProperty Name="FirmaId" ColumnName="FirmaId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OdenilenMebleg" ColumnName="OdenilenMebleg" />
+                <ScalarProperty Name="ToplamMebleg" ColumnName="ToplamMebleg" />
+                <ScalarProperty Name="Tarix" ColumnName="Tarix" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="Qazanc" ColumnName="Qazanc" />
+                <ScalarProperty Name="MehsulMeblegi" ColumnName="MehsulMeblegi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Say" ColumnName="Say" />
+                <ScalarProperty Name="SatisMeblegi" ColumnName="SatisMeblegi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Sekil" ColumnName="Sekil" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="IsComtable" ColumnName="IsComtable" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashBoxs">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.CashBox">
+              <MappingFragment StoreEntitySet="CashBoxs">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoneyTransfers">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.MoneyTransfer">
+              <MappingFragment StoreEntitySet="MoneyTransfers">
+                <ScalarProperty Name="Mebleg" ColumnName="Mebleg" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ToCashBoxId" ColumnName="ToCashBoxId" />
+                <ScalarProperty Name="FromCashBoxId" ColumnName="FromCashBoxId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashBoxCategories">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.CashBoxCategory">
+              <MappingFragment StoreEntitySet="CashBoxCategories">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashBoxLogs">
+            <EntityTypeMapping TypeName="ibuqayev_4yolModel.CashBoxLog">
+              <MappingFragment StoreEntitySet="CashBoxLogs">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Tarix" ColumnName="Tarix" />
+                <ScalarProperty Name="FirmaId" ColumnName="FirmaId" />
+                <ScalarProperty Name="Mebleg" ColumnName="Mebleg" />
+                <ScalarProperty Name="CashBoxCategoryId" ColumnName="CashBoxCategoryId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
